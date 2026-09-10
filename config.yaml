@@ -1,0 +1,380 @@
+# =============================================================
+# Term Dictionary Pipeline - V1 Configuration
+# 모든 parameter는 이 파일에서 관리한다. 코드에 하드코딩하지 않는다.
+# ${ENV} 형태는 환경변수로 치환된다.
+# =============================================================
+
+confluence:
+  base_url: "${CONFLUENCE_BASE_URL}"
+  email: "${CONFLUENCE_EMAIL}"
+  api_token: "${CONFLUENCE_API_TOKEN}"
+  space_ids: []            # 비우면 space_keys 사용
+  space_keys: ["NEXBRIDGE"]  # 테스트 코퍼스 스페이스
+  page_limit: 50           # pagination page size
+  body_format: "storage"   # storage | atlas_doc_format | view
+  timeout_seconds: 30
+  max_retries: 5
+  backoff_base_seconds: 1.0
+  backoff_max_seconds: 60.0
+
+storage:
+  db_path: "./data/term_dictionary.db"
+  model_dir: "./data/models"
+  output_dir: "./data/output"
+
+cleaning:
+  # 제거 대상 Confluence/HTML 요소
+  drop_tags: ["script", "style", "ac:parameter", "ri:attachment"]
+  # 본문에서 유지할 구조 태그 (텍스트 추출 후 개행 처리)
+  block_tags: ["p", "div", "li", "tr", "h1", "h2", "h3", "h4", "h5", "h6", "br", "td", "th"]
+  keep_code_blocks: false   # 코드 블록은 NLP corpus에서 제외
+  min_text_length: 10
+
+normalization:
+  date: true
+  time: true
+  number: true
+  url: true
+  email: true
+  number_min_digits: 2      # 이 자릿수 미만의 숫자는 치환하지 않음
+  date_year_min: 1990
+  date_year_max: 2100
+  # true 이면 YYYYMMDD 8자리 숫자는 주변 단서가 있을 때만 <DATE> 로 치환한다.
+  require_context_hint_for_yyyymmdd: false
+  # 8자리 숫자가 날짜일 가능성을 높여주는 주변 표현
+  date_context_hints:
+    ["예정", "오픈", "시작", "종료", "마감", "배포", "일정", "기준", "적용", "출시", "완료", "부터", "까지"]
+  # 치환 금지 패턴 (사내 고유명사 보호). 대소문자 무시.
+  protected_patterns:
+    - "VDA\\d+"
+    - "K8s"
+    - "S3"
+    - "P?[A-Z]{2,}\\d+[A-Za-z]*"      # SGAS2026, ERP2 등
+    - "[A-Za-z]+\\d+(?:\\.\\d+)*"     # Project2026, Log4j2
+    - "\\d+(?:\\.\\d+)+"              # 버전 표기 1.2.3
+
+sentence:
+  min_length: 4
+  max_length: 400
+  # 문장 종결 뒤에 오면 분리하지 않는 약어(오탐 방지)
+  abbreviation_guards: ["예", "cf", "etc", "vs", "No", "Fig"]
+
+komoran:
+  user_dictionary_path: "./data/userdic.txt"   # 없으면 자동으로 미사용
+  keep_pos: ["NNG", "NNP", "SL", "SH", "VV", "VA", "XR"]
+  # 표제어 추출 시 동사/형용사는 어간만 사용
+  stem_pos: ["VV", "VA"]
+  min_token_length: 1
+  # 한 글자 어간(하/되/있)은 의미가 약하므로 제외한다.
+  min_verb_stem_length: 2
+  # 형태소 분석 실패 시 해당 문장만 건너뛴다 (전체 중단하지 않음)
+  skip_on_error: true
+  # Komoran 사용 불가 시 공백 기반 대체 분석기 허용 여부 (운영에서는 false 유지)
+  allow_fallback: false
+
+phrases:
+  min_count: 3
+  threshold: 10.0
+  enable_trigram: true
+  delimiter: "_"
+  max_vocab_size: 40000000
+  # gensim 미설치 시 대체 bigram 구현 허용 여부 (운영에서는 false 유지)
+  allow_fallback: false
+  # phrase 결합 금지 토큰 (placeholder). Phrase 결과에 포함되면 거부한다.
+  forbidden_tokens: ["<DATE>", "<TIME>", "<NUMBER>", "<URL>", "<EMAIL>"]
+
+fasttext:
+  vector_size: 100
+  window: 5
+  min_count: 2
+  sg: 1
+  epochs: 20
+  min_n: 2
+  max_n: 5
+  # workers 를 2 이상 두면 seed 를 고정해도 학습이 재현되지 않는다.
+  # 실측: workers=4 로 같은 seed 2회 학습 시 top-10 이웃 일치가 41/50,
+  #       workers=1 이면 50/50. 파라미터 튜닝 결과가 학습 잡음에 묻히므로
+  #       재현성을 우선한다(이 규모에서는 학습이 수초로 끝난다).
+  workers: 1
+  seed: 42
+  model_filename: "fasttext.model"
+
+# 주변 단어 분포(PPMI) 비교 경로.
+# FastText 는 이 규모에서 형태적 파생('탈퇴' -> '탈퇴_회원')을 주로 학습한다.
+# 유의어는 같은 문서에 함께 나오지 않아도 같은 단어들과 어울리므로, 문맥 분포를
+# 직접 비교하면 다른 것이 잡힌다. 학습이 아니라 세기라서 재현성이 완전하다.
+context_profile:
+  enabled: true
+  window: 5
+  min_count: 5
+  top_n: 3
+  # PPMI 코사인은 FastText 코사인과 척도가 다르다(훨씬 낮게 나온다).
+  min_similarity: 0.35
+
+# LLM 이 용어 목록과 대표 문맥을 읽고 직접 후보 쌍을 제안하는 경로.
+# 분포 통계는 '회원 ↔ 고객'처럼 두 표기가 서로 다른 문서에 갈려 있으면 잡지 못한다.
+# 비용도 후보 전량을 검증하는 것보다 싸다(용어 1,240개 -> 13회 요청).
+# 주의: 쌍은 같은 배치 안에서만 찾을 수 있다. 배치를 작게 쪼개면 '회원'(빈도 204)과
+# '고객'(빈도 54)이 서로 다른 배치로 갈려 영영 비교되지 않는다. 그래서 문맥을 빼고
+# 배치를 크게 잡아 전체 용어가 몇 번의 요청 안에 모두 함께 보이도록 한다.
+# 문맥은 제안 단계에 필요 없다 - 관계 판정은 RelationValidator 가 실제 문맥으로 한다.
+llm_candidates:
+  enabled: true
+  # 전 용어가 한 요청에 들어가야 배치 경계로 쌍을 놓치지 않는다.
+  batch_size: 2000
+  context_per_term: 0
+  # 분포 경로와 달리 빈도 하한을 낮게 둔다. 고유 용어일수록 빈도가 낮다.
+  min_frequency: 2
+  max_terms: 2000
+  # API 키를 쓸 수 없을 때 tools/llm_bridge.py 가 만든 제안을 그대로 쓴다.
+  proposals_file: "./data/output/llm/proposed_pairs.json"
+
+candidate:
+  # 리콜 우선 설정. 넓게 모은 뒤 사람이 검수해서 제거하는 운영을 전제로 한다.
+  #
+  # 이 corpus 에서 측정된 사실:
+  #   - 후보의 96%가 유사도 0.87 이상이라 절대 cosine 에 변별력이 없다.
+  #   - 검증된 쌍에서 NEAR_SYNONYM 을 가려내는 ROC-AUC 가 0.61 수준이다.
+  #   - 따라서 min_similarity 를 0.85 -> 0.93 으로 올려도 품질은 거의 그대로다.
+  # 그래서 min_similarity 는 개수 조절 노브가 아니라 하한선으로만 둔다.
+  # 실제 순위는 candidate_generator 의 priority_score(문자열 근거 + 이웃 순위 +
+  # 경로 중복)가 정한다.
+  # LLM 제안 경로가 정답 회수를 책임지므로 분포 경로는 좁게 잡는다.
+  # 정답 8쌍 기준 실측 (LLM 제안 59쌍 포함):
+  #   top20 cap12 sim.85 prof.15 -> 후보 6355, 정답 7/8
+  #   top 3 cap 3 sim.93 prof.35 -> 후보 1223, 정답 7/8   <- 채택
+  #   top 3 cap 2                -> 후보  886, 정답 5/8   (여기서 무너진다)
+  #   분포 경로를 끄면           -> 후보  823, 정답 7/8
+  # 즉 이 규모에서 FastText/PPMI 는 정답 회수에 기여하지 않는다. 다만 정답이
+  # 8쌍뿐이라 근거가 얇으므로, 유일한 비-LLM 경로로서 좁게 남겨 둔다.
+  top_n: 3
+  min_similarity: 0.93
+  # 이 하한은 FastText 경로에만 적용된다. 저빈도 term 도 catalog 에는 남고
+  # 문자열 규칙(어순/약어/포함) 경로로는 계속 후보가 된다.
+  min_term_frequency: 5
+  min_term_length: 2             # 단, 영문 대문자 약어는 이 규칙에서 보호됨
+  # 기준 term 방향이 아니라 '실제 degree' 상한이다. 이전 구현은 루프의 기준
+  # term 에만 상한을 걸어서 최종 degree 가 11까지 올라갔다.
+  #
+  # 정답 8쌍 기준 실측 (FastText + 문맥 프로파일 병행):
+  #   cap  8 -> 후보 4363, 정답 3/8   ('회원', '탈퇴' 같은 허브가 상한에 포화)
+  #   cap 12 -> 후보 6347, 정답 5/8   <- 채택
+  #   cap 16 이상은 후보만 늘고 정답은 그대로다.
+  max_candidates_per_term: 3
+
+  # 분포 경로(FastText / 문맥 프로파일)만 지목한 쌍은 버린다.
+  # gold set 250쌍 실측 - '유의미(SYNONYM+DIRECTIONAL)' 비율:
+  #   포함관계/문자열/LLM 경로   108쌍 중 67쌍  62.0%
+  #   분포 + 다른 경로 corroborated 30쌍 중 10쌍  33.3%
+  #   분포 단독                 106쌍 중  2쌍   1.9%
+  #   FastText + 문맥 프로파일 합의 6쌍 중  0쌍   0.0%
+  # 분포 증거는 단독으로는 신호가 없다. 다른 경로를 뒷받침할 때만 쓴다.
+  require_corroboration: true
+  max_total_candidates: 30000
+
+  # --- 잡음 억제 필터 ---
+  # 소형 corpus 에서는 유사도 자체가 변별력을 잃는다(96%가 0.87 이상).
+  # 아래 두 필터가 임계값보다 훨씬 큰 효과를 낸다.
+
+  # 용어가 등장한 문맥 중 완결된 문장의 비율 하한.
+  # 표 셀이나 코드 조각으로만 나오는 토큰(NOT, total, quantity)은 0 에 가깝고
+  # 실제 도메인 용어는 0.4 이상이다. 0 이면 사용하지 않는다.
+  min_sentence_ratio: 0.05
+
+  # 상호 최근접 조건. hard filter 가 아니라 느슨한 recall 조건이다.
+  # "서로 top-k 안" 또는 "한쪽이 top-strong_rank_k 안" 이면 통과시킨다.
+  # 순위 자체는 rank_a_to_b / rank_b_to_a 로 보존해 우선순위 점수에 쓴다.
+  #
+  # corpus/synonym_ground_truth.json 8쌍 기준 실측 (재현 가능한 모델에서):
+  #   mutual 10 / strong 3 -> 후보 3234, 정답 2/8
+  #   mutual 20 / strong 5 -> 후보 3686, 정답 3/8
+  #   필터 끔(0)            -> 후보 4134, 정답 4/8   <- 채택
+  # 순위는 버리지 않고 rank_a_to_b / rank_b_to_a 로 보존해 priority_score 에 쓴다.
+  # 즉 상호 최근접은 '탈락 조건'이 아니라 '가중치'로만 쓴다.
+  mutual_top_k: 0
+  strong_rank_k: 0
+
+# 사람 검수에서 제거한 용어 목록. tools/review_sheet.py apply 가 갱신한다.
+# 아래 stopwords 와 합쳐져서 다음 실행부터 후보에서 제외된다.
+stopwords_file: "./data/review/removed_terms.txt"
+
+# 검수에서 제거한 용어 쌍. 다시 후보로 올라오지 않는다.
+excluded_pairs_file: "./data/review/removed_relations.txt"
+
+stopwords:
+  # NEXBRIDGE 코퍼스 1차 분석 결과를 보고 추가한 목록이다.
+  # 후보에 반복 등장했으나 검색어로서 변별력이 없는 토큰을 제거한다.
+
+  # --- 일반 기능어 ---
+  - "것"
+  - "수"
+  - "등"
+  - "관련"
+  - "내용"
+  - "자료"
+  - "문서"
+  - "경우"
+  - "때문"
+  - "위해"
+  - "통해"
+  - "대한"
+  - "대하"
+  - "사용"
+  - "확인"
+  - "가능"
+  - "진행"
+  - "방법"
+  - "방향"
+  - "방안"
+  - "선택"
+  - "최근"
+  - "의미"
+  - "의견"
+  - "현재"
+  - "과거"
+  - "처음"
+  - "그때"
+  - "이때"
+  - "이번"
+  - "오늘"
+  - "대부분"
+  - "무관"
+  - "원래"
+  - "잘못"
+  - "충분"
+  - "정확"
+  - "단순"
+  - "사항"
+  - "목적"
+  - "관점"
+  - "입장"
+  - "결론"
+  - "고민"
+  - "우려"
+  - "의도"
+  - "핵심"
+  - "부담"
+  - "비중"
+  - "빈도"
+  - "건수"
+  - "미만"
+  - "누적"
+  - "합계"
+  - "제공"
+  - "착수"
+  - "요구"
+  - "확보"
+  - "고려"
+  - "유도"
+  - "일괄"
+  - "이중"
+  - "최종"
+  - "본인"
+  - "케이스"
+  - "체계"
+  - "업무"
+  - "그룹"
+  - "시도"
+  - "행위"
+  - "구분"
+  - "구성"
+  - "형식"
+  - "본문"
+  - "원문"
+  - "남은"
+  - "이면"
+  - "하지"
+
+  # --- 동사/형용사 어간 (품사 필터를 통과하지만 변별력 없음) ---
+  - "기다리"
+  - "사라지"
+  - "어긋나"
+  - "늘어나"
+  - "늘리"
+  - "떨어지"
+  - "미루"
+  - "일어나"
+  - "줄어들"
+  - "채우"
+  - "붙이"
+  - "겹치"
+  - "몰리"
+  - "밀리"
+  - "빠르"
+  - "섞이"
+  - "쓰이"
+  - "잡히"
+  - "커지"
+  - "띄우"
+  - "나가"
+  - "모으"
+  - "건너뛰"
+  - "다루"
+  - "두지"
+  - "끝나"
+  - "모르"
+  - "알리"
+  - "보내"
+  - "지지"
+
+  # --- 표(스키마 정의)에서 유입되는 SQL/필드 키워드 ---
+  - "NOT NULL"
+  - "NULL"
+  - "VARCHAR"
+  - "BIGINT"
+  - "DATETIME"
+  - "BOOLEAN"
+  - "DEFAULT"
+  - "PK"
+  - "FK"
+  - "unique"
+  - "id"
+  - "at"
+  - "ms"
+  - "xx"
+  - "MB"
+  - "amount"
+  - "status"
+  - "email"
+  - "order"
+  - "payment"
+  - "reward"
+
+llm_validation:
+  provider: "anthropic"
+  model: "claude-sonnet-5"
+  api_key: "${ANTHROPIC_API_KEY}"
+  max_tokens: 4096
+  temperature: 0.0
+  context_per_term: 2
+  batch_size: 24
+  max_retries: 3
+  retry_backoff_seconds: 2.0
+  # 대표 context 선택 시 서로 다른 page/pattern에서 뽑기 위한 옵션
+  diversify_by_page: true
+  max_contexts_per_page: 2
+  # dry_run: true 이면 LLM 호출 없이 UNKNOWN 으로 기록 (파이프라인 점검용)
+  dry_run: false
+
+relation_policy:
+  # LLM confidence 별 활성화 정책 (§39)
+  # 자동 ACTIVE 는 좁게 잡는다. 잘못된 유의어 하나가 검색을 광범위하게 오염시키는
+  # 비용이, 유의어 하나를 놓치는 비용보다 크다. recall 은 REVIEW 에서 회수한다.
+  active_relation_types: ["SAME_ENTITY", "EXACT_ALIAS", "ABBREVIATION"]
+  # 양방향 치환이 안전하다고 판정된 관계만 자동 승인한다.
+  require_bidirectional_for_active: true
+  high_confidence_status: "ACTIVE"
+  medium_confidence_status: "REVIEW"
+  low_confidence_status: "REJECTED"
+  # RELATED 는 저장하되 기본 확장에 쓰지 않음 -> REVIEW 로 보관
+  related_status: "REVIEW"
+  never_expand_types: ["RELATED", "ANTONYM", "UNRELATED", "UNKNOWN"]
+  # ENTITY 는 동일 엔티티 관계만 확장 허용 (§44)
+  entity_expandable_types: ["SAME_ENTITY", "EXACT_ALIAS", "ALIAS", "ABBREVIATION"]
+  concept_expandable_types: ["EXACT_ALIAS", "SYNONYM", "NEAR_SYNONYM", "ABBREVIATION"]
+  # Alias 전이 자동 생성 금지 (§47)
+  enable_alias_transitivity: false
+
+logging:
+  level: "INFO"
+  file: "./data/output/pipeline.log"

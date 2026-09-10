@@ -1,0 +1,186 @@
+# 내부망(사내 Confluence + 사내 LLM) 전용 설정.
+#
+#   python -m app.main build -c config.internal.yaml
+#
+# config.yaml 과 다른 점만 주석으로 표시했다. 나머지는 같은 값을 쓴다.
+
+confluence:
+  # [필수] 사내 Confluence 주소. Server/DC 는 보통 /confluence 컨텍스트가 붙는다.
+  base_url: "${CONFLUENCE_BASE_URL}"
+
+  # [필수] 구버전(Server/Data Center)은 v1 이다.
+  #   v1 -> /rest/api/content    (start/limit 페이징)
+  #   v2 -> /api/v2/pages        (cursor 페이징, Cloud 전용)
+  api_version: "v1"
+
+  # 인증: 사내는 대부분 개인 액세스 토큰(PAT)이다.
+  #   - PAT 만 있으면 email 을 비우면 Bearer 인증으로 동작한다.
+  #   - ID/PW 나 Cloud API 토큰이면 email 과 api_token 을 함께 채운다.
+  email: "${CONFLUENCE_EMAIL:-}"
+  api_token: "${CONFLUENCE_API_TOKEN}"
+
+  # 사설 CA 를 쓰면 true 대신 CA 번들 경로를 넣는다. 예: "C:/certs/corp-ca.pem"
+  # 검증을 끄려면 false. (사내망이라도 되도록 CA 번들을 쓰는 편이 낫다)
+  verify_ssl: true
+
+  # 프록시나 게이트웨이가 별도 헤더를 요구하면 여기 넣는다.
+  extra_headers: {}
+
+  # v1 은 space key 를 그대로 쓴다(숫자 space id 변환 없음).
+  space_keys: ["TEAMSPACE"]
+  space_ids: []
+
+  page_limit: 50
+  body_format: "storage"
+  fetch_labels: true
+  timeout_seconds: 30
+  max_retries: 5
+  backoff_base_seconds: 1.0
+  backoff_max_seconds: 60.0
+
+cleaning:
+  # 내부망 Confluence 본문은 HTML 이다. Markdown 으로 바꿔 제목/목록/표 구조를
+  # 남긴다. 표 셀과 서술 문장을 구분해야 문장다움 판정이 제 역할을 한다.
+  # 이 모드는 표준 라이브러리만 쓰므로 beautifulsoup4 / lxml 이 없어도 된다.
+  output_format: "markdown"
+  keep_code_blocks: false
+  min_text_length: 10
+  drop_tags: ["script", "style", "ac:parameter", "ri:attachment", "ri:url"]
+  block_tags: ["p", "div", "li", "tr", "br", "td", "th", "h1", "h2", "h3", "h4", "h5", "h6"]
+
+sentence:
+  min_length: 4
+  max_length: 400
+  abbreviation_guards: ["예", "예를", "등", "vs", "No", "Fig"]
+
+komoran:
+  # Komoran 은 JDK 가 필요하다. JAVA_HOME 을 설정하거나 PATH 에 java 가 있어야 한다.
+  keep_pos: ["NNG", "NNP", "SL", "SH", "VV", "VA", "XR"]
+  stem_pos: ["VV", "VA"]
+  user_dictionary_path: "./data/userdic.txt"
+  min_token_length: 1
+  min_verb_stem_length: 2
+  skip_on_error: true
+  allow_fallback: false     # 형태소 분석 없이 돌면 품질이 급격히 떨어진다
+
+phrases:
+  # gensim 이 없으면 순수 파이썬 PMI 구현으로 자동 대체된다.
+  allow_fallback: true
+  min_count: 3
+  threshold: 10.0
+  enable_trigram: true
+  delimiter: "_"
+  max_vocab_size: 40000000
+  forbidden_tokens: ["<DATE>", "<TIME>", "<NUMBER>", "<URL>", "<EMAIL>"]
+
+fasttext:
+  # gensim 설치가 어려우면 false 로 둔다. gold set 250쌍 실측에서 분포 경로
+  # 단독의 유의미 비율은 1.9% 였고, 꺼도 정답 회수는 그대로였다.
+  # gensim 을 설치했다면 true 로 바꾸고 아래 값을 쓴다.
+  enabled: false
+  vector_size: 100
+  window: 5
+  min_count: 2
+  sg: 1
+  epochs: 20
+  min_n: 2
+  max_n: 5
+  workers: 1                # 2 이상이면 seed 를 줘도 학습이 재현되지 않는다
+  seed: 42
+  model_filename: "fasttext.model"
+
+context_profile:
+  # numpy 가 없으면 자동으로 건너뛴다.
+  enabled: false
+  window: 5
+  min_count: 5
+  top_n: 3
+  min_similarity: 0.35
+
+llm_candidates:
+  # 사내 LLM 이 용어 목록을 읽고 후보 쌍을 직접 제안한다.
+  # 분포 경로가 놓치는 '회원 ↔ 고객' 같은 쌍을 잡는 핵심 경로다.
+  enabled: true
+  batch_size: 2000          # 전 용어가 한 요청에 들어가야 배치 경계로 쌍을 놓치지 않는다
+  context_per_term: 0
+  min_frequency: 2
+  max_terms: 2000
+  # 사내 LLM 을 직접 호출하지 않고 파일로 중계하려면 아래 경로를 쓴다.
+  # (tools/llm_bridge.py 로 프롬프트를 내보내고 응답을 넣는 방식)
+  proposals_file: ""
+
+candidate:
+  top_n: 3
+  min_similarity: 0.93
+  min_term_frequency: 5
+  min_term_length: 2
+  max_candidates_per_term: 12
+  max_total_candidates: 30000
+  min_sentence_ratio: 0.05
+  mutual_top_k: 0
+  strong_rank_k: 0
+  # 분포 경로만 지목한 쌍은 버린다(실측 유의미 비율 1.9%).
+  # fasttext/context_profile 을 끄면 이 설정은 사실상 영향이 없다.
+  require_corroboration: true
+
+llm_validation:
+  # [필수] 사내 LLM 서버.
+  provider: "http"
+
+  # OpenAI 호환 엔드포인트면 그대로, 사내 규격이면 request_format: plain 을 쓴다.
+  base_url: "${INTERNAL_LLM_URL}"
+  model: "${INTERNAL_LLM_MODEL}"
+  api_key: "${INTERNAL_LLM_API_KEY:-}"
+
+  # 인증 헤더 이름/접두어가 다르면 여기서 바꾼다. 예: auth_header: "X-API-KEY", auth_prefix: ""
+  auth_header: "Authorization"
+  auth_prefix: "Bearer "
+
+  # openai : {"model","messages":[...]}  -> choices.0.message.content
+  # plain  : {"model", <system_key>, <prompt_key>} -> response_path 로 지정
+  request_format: "openai"
+  response_path: "choices.0.message.content"
+  system_key: "system"
+  prompt_key: "prompt"
+
+  verify_ssl: true
+  extra_headers: {}
+  extra_body: {}
+
+  max_tokens: 4096
+  temperature: 0.0
+  timeout_seconds: 120
+  max_retries: 3
+  retry_backoff_seconds: 2.0
+
+  context_per_term: 2
+  batch_size: 24
+  diversify_by_page: true
+  max_contexts_per_page: 2
+  dry_run: false
+
+relation_policy:
+  active_relation_types: ["SAME_ENTITY", "EXACT_ALIAS", "ABBREVIATION"]
+  require_bidirectional_for_active: true
+  high_confidence_status: "ACTIVE"
+  medium_confidence_status: "REVIEW"
+  low_confidence_status: "REJECTED"
+  related_status: "REVIEW"
+  never_expand_types: ["RELATED", "ANTONYM", "UNRELATED", "UNKNOWN"]
+  entity_expandable_types: ["SAME_ENTITY", "EXACT_ALIAS", "ALIAS", "ABBREVIATION"]
+  concept_expandable_types: ["EXACT_ALIAS", "SYNONYM", "NEAR_SYNONYM", "ABBREVIATION"]
+  enable_alias_transitivity: false
+
+storage:
+  db_path: "./data/term_dictionary.db"
+  model_dir: "./data/models"
+  output_dir: "./data/output"
+  review_dir: "./data/review"
+
+stopwords_file: "./data/review/removed_terms.txt"
+excluded_pairs_file: "./data/review/removed_relations.txt"
+stopwords: []
+
+logging:
+  level: "INFO"
+  file: "./data/output/pipeline.log"

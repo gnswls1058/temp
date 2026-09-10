@@ -1,0 +1,16 @@
+# 내부망 필수 구성 (config.internal.yaml 기준)
+#
+# JPype1 / numpy / lxml 은 konlpy 가 요구하는 필수 의존성이다.
+# 형태소 분석 없이는 한국어 용어 추출이 성립하지 않으므로 뺄 수 없다.
+#
+# 여기에 없는 것(gensim, beautifulsoup4, anthropic)은 없어도 파이프라인이 돈다.
+#   - 본문 정제: 표준 라이브러리 HTML 파서 사용 (cleaning.output_format: markdown)
+#   - 복합어 추출: gensim 이 없으면 순수 파이썬 PMI 로 대체
+#   - fasttext / context_profile: config 에서 꺼 둔다
+#
+# 별도로 JDK 8 이상이 필요하다 (Komoran 이 JVM 위에서 돈다).
+
+PyYAML==6.0.2
+requests==2.32.3
+konlpy==0.6.0
+JPype1>=1.5.0,<2        # 3.13 은 1.5.0 휠이 없어 상한만 둔다

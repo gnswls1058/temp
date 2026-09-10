@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/models/
+data/output/
+
+# 코퍼스 게시 상태 (환경별로 pageId 가 다름)
+corpus/publish_state.json
+data/review/*.csv
+
+# 반입 꾸러미 (Release 로 배포하거나 로컬에서만 쓴다)
+*.zip
+*.tgz
+dist-split/
+
+# 선택 의존성 휠 (247MB — 필요할 때만 별도로 받는다)
+wheels-optional/

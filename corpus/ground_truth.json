@@ -1,0 +1,7681 @@
+[
+  {
+    "documentId": "DOC-001",
+    "title": "소셜 로그인 통합 정책 1차 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Echo",
+    "entities": [
+      "NEXUS",
+      "BlueGate"
+    ],
+    "features": [
+      "로그인",
+      "소셜 로그인"
+    ],
+    "participants": [
+      "송지은",
+      "김도윤"
+    ],
+    "concepts": [
+      "계정 통합",
+      "이메일 중복",
+      "정책 미확정"
+    ],
+    "dates": [
+      "2024-07-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 915
+  },
+  {
+    "documentId": "DOC-002",
+    "title": "Echo 킥오프 - 인증 서버 분리 범위 확정",
+    "department": "플랫폼개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate",
+      "NEXUS"
+    ],
+    "features": [
+      "로그인",
+      "인증"
+    ],
+    "participants": [
+      "김도윤",
+      "조아름",
+      "임채원"
+    ],
+    "concepts": [
+      "서비스 분리",
+      "JWT",
+      "마이그레이션"
+    ],
+    "dates": [
+      "2024-07-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 748
+  },
+  {
+    "documentId": "DOC-003",
+    "title": "BlueGate 로그인 인증 플로우 설계",
+    "department": "플랫폼개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate",
+      "NEXUS"
+    ],
+    "features": [
+      "로그인",
+      "인증"
+    ],
+    "participants": [
+      "김도윤"
+    ],
+    "concepts": [
+      "JWT",
+      "Access Token",
+      "Refresh Token",
+      "Edge Case"
+    ],
+    "dates": [
+      "2024-07-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1278
+  },
+  {
+    "documentId": "DOC-004",
+    "title": "로그인 API v1 명세",
+    "department": "플랫폼개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "로그인"
+    ],
+    "participants": [],
+    "concepts": [
+      "Access Token",
+      "Error Code"
+    ],
+    "dates": [
+      "2024-08-01"
+    ],
+    "isDeprecated": true,
+    "bodyLength": 999
+  },
+  {
+    "documentId": "DOC-005",
+    "title": "member_auth 테이블 설계안",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Echo",
+    "entities": [
+      "NEXUS",
+      "BlueGate"
+    ],
+    "features": [
+      "로그인",
+      "소셜 로그인"
+    ],
+    "participants": [
+      "이서연",
+      "김도윤"
+    ],
+    "concepts": [
+      "테이블 분리",
+      "Unique Constraint",
+      "소셜 계정 연결"
+    ],
+    "dates": [
+      "2024-08-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1353
+  },
+  {
+    "documentId": "DOC-006",
+    "title": "토큰 재발급 API v1 명세",
+    "department": "플랫폼개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [],
+    "concepts": [
+      "Refresh Token",
+      "재시도"
+    ],
+    "dates": [
+      "2024-08-12"
+    ],
+    "isDeprecated": true,
+    "bodyLength": 853
+  },
+  {
+    "documentId": "DOC-007",
+    "title": "새벽 시간대 로그아웃 급증 현상 조사",
+    "department": "플랫폼개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증",
+      "로그인"
+    ],
+    "participants": [
+      "오세훈",
+      "김도윤"
+    ],
+    "concepts": [
+      "JWT",
+      "Refresh Token",
+      "시계 오차"
+    ],
+    "dates": [
+      "2024-08-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 983
+  },
+  {
+    "documentId": "DOC-008",
+    "title": "Refresh Token 회전 도입 여부 논의",
+    "department": "플랫폼개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [
+      "조아름",
+      "김도윤",
+      "한지민"
+    ],
+    "concepts": [
+      "Refresh Token",
+      "탈취 감지",
+      "동시성"
+    ],
+    "dates": [
+      "2024-08-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 859
+  },
+  {
+    "documentId": "DOC-009",
+    "title": "Refresh Token 회전 설계",
+    "department": "플랫폼개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [
+      "김도윤"
+    ],
+    "concepts": [
+      "Refresh Token",
+      "동시성",
+      "탈취 감지",
+      "보상 처리"
+    ],
+    "dates": [
+      "2024-09-03"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1437
+  },
+  {
+    "documentId": "DOC-010",
+    "title": "[리뷰] TokenService 회전 로직 1차",
+    "department": "플랫폼개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [
+      "김도윤",
+      "이서연"
+    ],
+    "concepts": [
+      "동시성",
+      "Transaction",
+      "예외 처리"
+    ],
+    "dates": [
+      "2024-09-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1066
+  },
+  {
+    "documentId": "DOC-011",
+    "title": "Echo Sprint 3 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate",
+      "NEXUS"
+    ],
+    "features": [
+      "인증",
+      "로그인"
+    ],
+    "participants": [
+      "임채원",
+      "한지민"
+    ],
+    "concepts": [
+      "Blocker",
+      "일정 지연"
+    ],
+    "dates": [
+      "2024-09-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 692
+  },
+  {
+    "documentId": "DOC-012",
+    "title": "2024 코드리뷰 규칙",
+    "department": "백엔드개발팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "코드리뷰",
+      "PR",
+      "팀 규칙"
+    ],
+    "dates": [
+      "2024-09-18"
+    ],
+    "isDeprecated": true,
+    "bodyLength": 543
+  },
+  {
+    "documentId": "DOC-013",
+    "title": "로컬 개발 환경 설정 가이드",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "BlueGate"
+    ],
+    "features": [],
+    "participants": [
+      "오세훈"
+    ],
+    "concepts": [
+      "개발 환경",
+      "Docker"
+    ],
+    "dates": [
+      "2024-09-24"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 756
+  },
+  {
+    "documentId": "DOC-014",
+    "title": "OAuth 콜백 state 검증 누락",
+    "department": "정보보안팀",
+    "documentType": "이슈 정리",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "소셜 로그인",
+      "인증"
+    ],
+    "participants": [
+      "조아름",
+      "김도윤"
+    ],
+    "concepts": [
+      "CSRF",
+      "OAuth",
+      "보안 점검"
+    ],
+    "dates": [
+      "2024-10-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 740
+  },
+  {
+    "documentId": "DOC-015",
+    "title": "Echo Release 준비 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증",
+      "로그인",
+      "소셜 로그인"
+    ],
+    "participants": [
+      "임채원",
+      "윤수빈"
+    ],
+    "concepts": [
+      "릴리스",
+      "QA",
+      "롤백"
+    ],
+    "dates": [
+      "2024-10-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 594
+  },
+  {
+    "documentId": "DOC-016",
+    "title": "해지 후 재가입 가능 시점 1차 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원 탈퇴",
+      "회원가입"
+    ],
+    "participants": [
+      "송지은",
+      "강민재"
+    ],
+    "concepts": [
+      "재가입 유예",
+      "어뷰징",
+      "정책 미확정"
+    ],
+    "dates": [
+      "2025-01-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 726
+  },
+  {
+    "documentId": "DOC-017",
+    "title": "Aurora 킥오프 - 가입 퍼널 개편 범위",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [
+      "이서연",
+      "임채원",
+      "최유진"
+    ],
+    "concepts": [
+      "범위 산정",
+      "일정"
+    ],
+    "dates": [
+      "2025-01-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 752
+  },
+  {
+    "documentId": "DOC-018",
+    "title": "회원가입 플로우 재설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS",
+      "BlueGate"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [],
+    "concepts": [
+      "상태 전이",
+      "Validation",
+      "Edge Case",
+      "중복 요청"
+    ],
+    "dates": [
+      "2025-01-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1453
+  },
+  {
+    "documentId": "DOC-019",
+    "title": "member 테이블 컬럼 정리안",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입",
+      "휴면 처리"
+    ],
+    "participants": [],
+    "concepts": [
+      "상태값 관리",
+      "Index",
+      "정합성"
+    ],
+    "dates": [
+      "2025-01-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1488
+  },
+  {
+    "documentId": "DOC-020",
+    "title": "회원가입 API v2 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [],
+    "concepts": [
+      "Validation",
+      "Error Code",
+      "버전 변경"
+    ],
+    "dates": [
+      "2025-01-30"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1334
+  },
+  {
+    "documentId": "DOC-021",
+    "title": "이메일 인증번호 발송 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입",
+      "인증"
+    ],
+    "participants": [],
+    "concepts": [
+      "Rate Limit",
+      "재전송",
+      "만료"
+    ],
+    "dates": [
+      "2025-02-04"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 793
+  },
+  {
+    "documentId": "DOC-022",
+    "title": "가입 인증 메일 중복 발송",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입",
+      "인증"
+    ],
+    "participants": [
+      "이서연",
+      "오세훈"
+    ],
+    "concepts": [
+      "중복 요청",
+      "재시도",
+      "메시지 큐"
+    ],
+    "dates": [
+      "2025-02-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1033
+  },
+  {
+    "documentId": "DOC-023",
+    "title": "인증번호 발송 및 검증 정책 정리",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "인증",
+      "회원가입"
+    ],
+    "participants": [],
+    "concepts": [
+      "만료",
+      "Rate Limit",
+      "Edge Case"
+    ],
+    "dates": [
+      "2025-02-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 808
+  },
+  {
+    "documentId": "DOC-024",
+    "title": "[리뷰] SignUpService 검증 로직 분리",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [
+      "이서연",
+      "김도윤"
+    ],
+    "concepts": [
+      "도메인 분리",
+      "Transaction",
+      "예외 처리"
+    ],
+    "dates": [
+      "2025-02-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 749
+  },
+  {
+    "documentId": "DOC-025",
+    "title": "Aurora Sprint 2 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [
+      "임채원"
+    ],
+    "concepts": [
+      "Risk",
+      "일정"
+    ],
+    "dates": [
+      "2025-02-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 530
+  },
+  {
+    "documentId": "DOC-026",
+    "title": "해지 후 재가입 2차 - 제한 기준 확정",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS",
+      "MARS"
+    ],
+    "features": [
+      "회원 탈퇴",
+      "회원가입",
+      "쿠폰 지급"
+    ],
+    "participants": [
+      "송지은",
+      "이서연",
+      "조아름"
+    ],
+    "concepts": [
+      "재가입 유예",
+      "개인정보",
+      "어뷰징"
+    ],
+    "dates": [
+      "2025-02-26"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 793
+  },
+  {
+    "documentId": "DOC-027",
+    "title": "테스트 계정 생성 및 초기화 방법",
+    "department": "QA팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "AIMS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [],
+    "concepts": [
+      "테스트 환경",
+      "운영 데이터 분리"
+    ],
+    "dates": [
+      "2025-03-04"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 686
+  },
+  {
+    "documentId": "DOC-028",
+    "title": "동일 전화번호로 다중 계정 생성 가능",
+    "department": "QA팀",
+    "documentType": "이슈 정리",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [
+      "윤수빈"
+    ],
+    "concepts": [
+      "Validation",
+      "어뷰징",
+      "정책 미확정"
+    ],
+    "dates": [
+      "2025-03-07"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 631
+  },
+  {
+    "documentId": "DOC-029",
+    "title": "가입 폼 클라이언트 검증 기준 맞추기",
+    "department": "프론트엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [
+      "최유진",
+      "정하늘",
+      "이서연"
+    ],
+    "concepts": [
+      "Validation",
+      "에러 처리",
+      "UX"
+    ],
+    "dates": [
+      "2025-03-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 749
+  },
+  {
+    "documentId": "DOC-030",
+    "title": "Aurora Sprint 3 - QA 진입 전 확인사항",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입",
+      "회원 탈퇴"
+    ],
+    "participants": [
+      "임채원",
+      "윤수빈"
+    ],
+    "concepts": [
+      "QA",
+      "체크리스트",
+      "Blocker"
+    ],
+    "dates": [
+      "2025-03-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 603
+  },
+  {
+    "documentId": "DOC-031",
+    "title": "휴면 회원 처리 기준 재정비",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "휴면 처리"
+    ],
+    "participants": [
+      "이서연",
+      "오세훈"
+    ],
+    "concepts": [
+      "배치",
+      "상태 전이",
+      "부하"
+    ],
+    "dates": [
+      "2025-03-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 755
+  },
+  {
+    "documentId": "DOC-032",
+    "title": "휴면 전환 및 복귀 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS",
+      "BlueGate"
+    ],
+    "features": [
+      "휴면 처리",
+      "로그인"
+    ],
+    "participants": [],
+    "concepts": [
+      "상태 전이",
+      "Edge Case",
+      "배치",
+      "동시성"
+    ],
+    "dates": [
+      "2025-03-24"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 975
+  },
+  {
+    "documentId": "DOC-033",
+    "title": "회원 조회 API v2 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "프로필"
+    ],
+    "participants": [],
+    "concepts": [
+      "Authentication",
+      "버전 변경",
+      "마스킹"
+    ],
+    "dates": [
+      "2025-03-26"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 973
+  },
+  {
+    "documentId": "DOC-034",
+    "title": "새벽 배치 구간 DB 응답 지연",
+    "department": "DevOps팀",
+    "documentType": "이슈 정리",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "휴면 처리"
+    ],
+    "participants": [
+      "오세훈"
+    ],
+    "concepts": [
+      "부하",
+      "배치",
+      "Slow Query"
+    ],
+    "dates": [
+      "2025-04-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 756
+  },
+  {
+    "documentId": "DOC-035",
+    "title": "휴면 안내 메일 발송 시점 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "휴면 처리"
+    ],
+    "participants": [
+      "송지은",
+      "문가영"
+    ],
+    "concepts": [
+      "고객 문의",
+      "정책 미확정"
+    ],
+    "dates": [
+      "2025-04-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 637
+  },
+  {
+    "documentId": "DOC-036",
+    "title": "[리뷰] MemberStatusScheduler 커서 기반 분할",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "휴면 처리"
+    ],
+    "participants": [
+      "이서연",
+      "김도윤"
+    ],
+    "concepts": [
+      "배치",
+      "Query 최적화",
+      "재시도"
+    ],
+    "dates": [
+      "2025-04-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 844
+  },
+  {
+    "documentId": "DOC-037",
+    "title": "회원 탈퇴 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS",
+      "ORBIT"
+    ],
+    "features": [
+      "회원 탈퇴"
+    ],
+    "participants": [],
+    "concepts": [
+      "Validation",
+      "선행 조건"
+    ],
+    "dates": [
+      "2025-04-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1004
+  },
+  {
+    "documentId": "DOC-038",
+    "title": "회원 탈퇴 및 개인정보 삭제 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "회원 탈퇴"
+    ],
+    "participants": [],
+    "concepts": [
+      "데이터 삭제",
+      "정합성",
+      "보상 처리",
+      "Edge Case"
+    ],
+    "dates": [
+      "2025-04-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1172
+  },
+  {
+    "documentId": "DOC-039",
+    "title": "member_withdrawal 이력 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원 탈퇴"
+    ],
+    "participants": [],
+    "concepts": [
+      "history 테이블",
+      "개인정보",
+      "정합성"
+    ],
+    "dates": [
+      "2025-04-22"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1285
+  },
+  {
+    "documentId": "DOC-040",
+    "title": "Aurora 릴리스 후 1주차 지표 정리",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [
+      "임채원",
+      "배현우"
+    ],
+    "concepts": [
+      "지표",
+      "전환율",
+      "회고"
+    ],
+    "dates": [
+      "2025-04-29"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 683
+  },
+  {
+    "documentId": "DOC-041",
+    "title": "탈퇴 회원 주문 상세 조회 시 오류",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS",
+      "ORBIT"
+    ],
+    "features": [
+      "회원 탈퇴",
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "정합성",
+      "서비스 간 호출",
+      "예외 처리"
+    ],
+    "dates": [
+      "2025-05-07"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 777
+  },
+  {
+    "documentId": "DOC-042",
+    "title": "소셜 계정 통합 기술 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Aurora",
+    "entities": [
+      "NEXUS",
+      "BlueGate"
+    ],
+    "features": [
+      "소셜 로그인",
+      "회원가입"
+    ],
+    "participants": [
+      "김도윤",
+      "한지민"
+    ],
+    "concepts": [
+      "계정 병합",
+      "정합성",
+      "Edge Case"
+    ],
+    "dates": [
+      "2025-05-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 627
+  },
+  {
+    "documentId": "DOC-043",
+    "title": "소셜 계정 연결 API 명세",
+    "department": "플랫폼개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Aurora",
+    "entities": [
+      "BlueGate",
+      "NEXUS"
+    ],
+    "features": [
+      "소셜 로그인"
+    ],
+    "participants": [],
+    "concepts": [
+      "OAuth",
+      "Validation",
+      "Error Code"
+    ],
+    "dates": [
+      "2025-05-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1036
+  },
+  {
+    "documentId": "DOC-044",
+    "title": "[리뷰] 소셜 연결 시 중복 판정 처리",
+    "department": "플랫폼개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Aurora",
+    "entities": [
+      "BlueGate",
+      "NEXUS"
+    ],
+    "features": [
+      "소셜 로그인"
+    ],
+    "participants": [
+      "김도윤",
+      "이서연"
+    ],
+    "concepts": [
+      "동시성",
+      "Unique Constraint",
+      "예외 처리"
+    ],
+    "dates": [
+      "2025-05-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 786
+  },
+  {
+    "documentId": "DOC-045",
+    "title": "회원 상태별 기능 제한 정의서",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "회원가입",
+      "휴면 처리",
+      "회원 탈퇴"
+    ],
+    "participants": [],
+    "concepts": [
+      "상태값 관리",
+      "권한"
+    ],
+    "dates": [
+      "2025-06-03"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 856
+  },
+  {
+    "documentId": "DOC-046",
+    "title": "리워드 정책 통합 요구사항 정리",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "리워드 지급",
+      "포인트",
+      "쿠폰 지급"
+    ],
+    "participants": [
+      "강민재",
+      "박준호"
+    ],
+    "concepts": [
+      "정책 통합",
+      "적립금",
+      "일정 영향"
+    ],
+    "dates": [
+      "2025-07-01"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 780
+  },
+  {
+    "documentId": "DOC-047",
+    "title": "Nova 킥오프 - MARS 리워드 재설계 범위",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "리워드 지급",
+      "포인트"
+    ],
+    "participants": [
+      "박준호",
+      "임채원"
+    ],
+    "concepts": [
+      "범위 산정",
+      "마이그레이션",
+      "일정"
+    ],
+    "dates": [
+      "2025-07-07"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 710
+  },
+  {
+    "documentId": "DOC-048",
+    "title": "reward 테이블 설계안",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "리워드 지급",
+      "포인트"
+    ],
+    "participants": [],
+    "concepts": [
+      "잔액 관리",
+      "정합성",
+      "Index"
+    ],
+    "dates": [
+      "2025-07-10"
+    ],
+    "isDeprecated": true,
+    "bodyLength": 1240
+  },
+  {
+    "documentId": "DOC-049",
+    "title": "리워드 지급 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "리워드 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "중복 지급",
+      "Transaction",
+      "Edge Case",
+      "이벤트"
+    ],
+    "dates": [
+      "2025-07-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1190
+  },
+  {
+    "documentId": "DOC-050",
+    "title": "리워드 지급 API v1 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "리워드 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "멱등성",
+      "Error Code",
+      "참조키"
+    ],
+    "dates": [
+      "2025-07-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1337
+  },
+  {
+    "documentId": "DOC-051",
+    "title": "적립금 잔액 조회 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [],
+    "concepts": [
+      "조회 성능",
+      "소멸 예정"
+    ],
+    "dates": [
+      "2025-07-22"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 792
+  },
+  {
+    "documentId": "DOC-052",
+    "title": "[리뷰] RewardService 지급 로직 1차",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "리워드 지급"
+    ],
+    "participants": [
+      "박준호",
+      "김도윤"
+    ],
+    "concepts": [
+      "멱등성",
+      "Transaction",
+      "동시성"
+    ],
+    "dates": [
+      "2025-07-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1204
+  },
+  {
+    "documentId": "DOC-053",
+    "title": "Nova Sprint 1 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "리워드 지급",
+      "포인트"
+    ],
+    "participants": [],
+    "concepts": [
+      "일정",
+      "Risk"
+    ],
+    "dates": [
+      "2025-07-31"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 475
+  },
+  {
+    "documentId": "DOC-054",
+    "title": "여름 이벤트 보상 중복 지급 발생",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "리워드 지급",
+      "이벤트 보상"
+    ],
+    "participants": [],
+    "concepts": [
+      "중복 지급",
+      "참조키",
+      "회수"
+    ],
+    "dates": [
+      "2025-08-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1089
+  },
+  {
+    "documentId": "DOC-055",
+    "title": "적립금 유효기간 정책 확정",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [
+      "강민재",
+      "송지은"
+    ],
+    "concepts": [
+      "유효기간",
+      "소멸",
+      "고지"
+    ],
+    "dates": [
+      "2025-08-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 683
+  },
+  {
+    "documentId": "DOC-056",
+    "title": "적립금 소멸 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [],
+    "concepts": [
+      "배치",
+      "유효기간",
+      "Edge Case",
+      "정합성"
+    ],
+    "dates": [
+      "2025-08-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1187
+  },
+  {
+    "documentId": "DOC-057",
+    "title": "동시 주문 시 적립금 잔액이 음수가 되는 문제",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "포인트",
+      "주문"
+    ],
+    "participants": [
+      "박준호",
+      "김도윤"
+    ],
+    "concepts": [
+      "동시성",
+      "잔액 관리",
+      "Race Condition",
+      "설계 변경"
+    ],
+    "dates": [
+      "2025-08-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 996
+  },
+  {
+    "documentId": "DOC-058",
+    "title": "적립금 잔액 관리 방식 재검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트",
+      "리워드 지급"
+    ],
+    "participants": [
+      "박준호",
+      "김도윤",
+      "배현우"
+    ],
+    "concepts": [
+      "ledger",
+      "동시성",
+      "설계 변경",
+      "정합성"
+    ],
+    "dates": [
+      "2025-08-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1028
+  },
+  {
+    "documentId": "DOC-059",
+    "title": "리워드 수동 지급 및 회수 절차",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "MARS",
+      "AIMS"
+    ],
+    "features": [
+      "리워드 지급",
+      "리워드 회수"
+    ],
+    "participants": [],
+    "concepts": [
+      "운영 대응",
+      "승인 절차"
+    ],
+    "dates": [
+      "2025-08-26"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 654
+  },
+  {
+    "documentId": "DOC-060",
+    "title": "Nova Sprint 3 - 설계 변경 반영 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트",
+      "리워드 지급"
+    ],
+    "participants": [
+      "임채원",
+      "박준호"
+    ],
+    "concepts": [
+      "설계 변경",
+      "일정 지연",
+      "Risk"
+    ],
+    "dates": [
+      "2025-08-29"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 613
+  },
+  {
+    "documentId": "DOC-061",
+    "title": "reward_balance / reward_history 분리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트",
+      "리워드 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "ledger",
+      "낙관적 락",
+      "정합성",
+      "Index"
+    ],
+    "dates": [
+      "2025-09-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 2103
+  },
+  {
+    "documentId": "DOC-062",
+    "title": "적립금 사용 및 차감 순서 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "포인트",
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "차감 순서",
+      "동시성",
+      "Edge Case",
+      "재시도"
+    ],
+    "dates": [
+      "2025-09-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1168
+  },
+  {
+    "documentId": "DOC-063",
+    "title": "[리뷰] 잔액 갱신 낙관적 락 재시도",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [
+      "박준호",
+      "김도윤"
+    ],
+    "concepts": [
+      "Transaction",
+      "재시도",
+      "동시성"
+    ],
+    "dates": [
+      "2025-09-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1063
+  },
+  {
+    "documentId": "DOC-064",
+    "title": "적립금 사용 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "포인트",
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "멱등성",
+      "Error Code",
+      "취소"
+    ],
+    "dates": [
+      "2025-09-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1294
+  },
+  {
+    "documentId": "DOC-065",
+    "title": "리워드 회수 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "리워드 회수"
+    ],
+    "participants": [],
+    "concepts": [
+      "회수",
+      "음수 잔액",
+      "승인"
+    ],
+    "dates": [
+      "2025-09-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1113
+  },
+  {
+    "documentId": "DOC-066",
+    "title": "주문 취소 시 리워드 회수 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "리워드 회수",
+      "주문 취소",
+      "결제 취소"
+    ],
+    "participants": [],
+    "concepts": [
+      "보상 처리",
+      "Edge Case",
+      "정합성",
+      "부분 취소"
+    ],
+    "dates": [
+      "2025-09-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1047
+  },
+  {
+    "documentId": "DOC-067",
+    "title": "대사 배치에서 잔액 불일치 12건 확인",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [],
+    "concepts": [
+      "정합성",
+      "대사",
+      "배치"
+    ],
+    "dates": [
+      "2025-09-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 926
+  },
+  {
+    "documentId": "DOC-068",
+    "title": "쿠폰 구조 개선 범위 논의",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "쿠폰 지급",
+      "쿠폰 사용"
+    ],
+    "participants": [
+      "박준호",
+      "강민재"
+    ],
+    "concepts": [
+      "범위 산정",
+      "발급 방식"
+    ],
+    "dates": [
+      "2025-10-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 652
+  },
+  {
+    "documentId": "DOC-069",
+    "title": "coupon / coupon_issue 테이블 구조",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "쿠폰 지급",
+      "쿠폰 사용"
+    ],
+    "participants": [],
+    "concepts": [
+      "테이블 분리",
+      "Unique Constraint",
+      "대량 발급"
+    ],
+    "dates": [
+      "2025-10-07"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1635
+  },
+  {
+    "documentId": "DOC-070",
+    "title": "쿠폰 발급 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "쿠폰 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "멱등성",
+      "대량 발급",
+      "Error Code"
+    ],
+    "dates": [
+      "2025-10-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1155
+  },
+  {
+    "documentId": "DOC-071",
+    "title": "동일 쿠폰이 두 주문에 적용되는 문제",
+    "department": "QA팀",
+    "documentType": "이슈 정리",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "쿠폰 사용",
+      "주문"
+    ],
+    "participants": [
+      "윤수빈",
+      "박준호"
+    ],
+    "concepts": [
+      "동시성",
+      "중복 사용",
+      "Race Condition"
+    ],
+    "dates": [
+      "2025-10-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 990
+  },
+  {
+    "documentId": "DOC-072",
+    "title": "부분 환불 시 리워드 회수 기준 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "부분 취소",
+      "리워드 회수",
+      "환불"
+    ],
+    "participants": [
+      "송지은",
+      "강민재"
+    ],
+    "concepts": [
+      "부분 취소",
+      "정책 미확정",
+      "배분"
+    ],
+    "dates": [
+      "2025-10-22"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 895
+  },
+  {
+    "documentId": "DOC-073",
+    "title": "Nova 마이그레이션 리허설 결과",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [
+      "임채원",
+      "오세훈"
+    ],
+    "concepts": [
+      "마이그레이션",
+      "점검",
+      "롤백"
+    ],
+    "dates": [
+      "2025-10-29"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1039
+  },
+  {
+    "documentId": "DOC-074",
+    "title": "적립금 관련 장애 대응 가이드",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트",
+      "리워드 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "장애 대응",
+      "운영",
+      "대사"
+    ],
+    "dates": [
+      "2025-11-04"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 967
+  },
+  {
+    "documentId": "DOC-075",
+    "title": "Nova 배포 후 회고",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트",
+      "리워드 지급",
+      "쿠폰 지급"
+    ],
+    "participants": [
+      "임채원",
+      "박준호",
+      "김도윤"
+    ],
+    "concepts": [
+      "회고",
+      "설계 변경",
+      "일정"
+    ],
+    "dates": [
+      "2025-11-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 847
+  },
+  {
+    "documentId": "DOC-076",
+    "title": "결제 실패 화면 처리 방향 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "강민재",
+      "정하늘"
+    ],
+    "concepts": [
+      "재시도",
+      "UX",
+      "에러 처리"
+    ],
+    "dates": [
+      "2025-11-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 851
+  },
+  {
+    "documentId": "DOC-077",
+    "title": "Falcon 킥오프 - 결제 고도화 범위",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제",
+      "결제 취소",
+      "환불"
+    ],
+    "participants": [
+      "김도윤",
+      "임채원",
+      "강민재"
+    ],
+    "concepts": [
+      "범위 산정",
+      "멱등성",
+      "PG"
+    ],
+    "dates": [
+      "2025-11-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 858
+  },
+  {
+    "documentId": "DOC-078",
+    "title": "결제 승인 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "결제",
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "멱등성",
+      "Transaction",
+      "외부 시스템 장애",
+      "Edge Case"
+    ],
+    "dates": [
+      "2025-11-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1481
+  },
+  {
+    "documentId": "DOC-079",
+    "title": "payment 테이블 재설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제",
+      "결제 취소"
+    ],
+    "participants": [],
+    "concepts": [
+      "상태값 관리",
+      "history 테이블",
+      "Unique Constraint",
+      "부분 취소"
+    ],
+    "dates": [
+      "2025-11-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 2006
+  },
+  {
+    "documentId": "DOC-080",
+    "title": "결제 승인 API v2 초안",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "멱등성",
+      "Error Code",
+      "버전 변경"
+    ],
+    "dates": [
+      "2025-12-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1444
+  },
+  {
+    "documentId": "DOC-081",
+    "title": "PG 연동 방식 및 타임아웃 기준 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "김도윤",
+      "오세훈"
+    ],
+    "concepts": [
+      "Timeout",
+      "외부 시스템 장애",
+      "Circuit Breaker"
+    ],
+    "dates": [
+      "2025-12-04"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 883
+  },
+  {
+    "documentId": "DOC-082",
+    "title": "승인 완료 후 주문 저장 실패 3건",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제",
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "정합성",
+      "외부 시스템 장애",
+      "보상 처리"
+    ],
+    "dates": [
+      "2025-12-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1051
+  },
+  {
+    "documentId": "DOC-083",
+    "title": "결제 상태 전이 정의",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제",
+      "결제 취소",
+      "부분 취소"
+    ],
+    "participants": [],
+    "concepts": [
+      "상태 전이",
+      "부분 취소",
+      "Edge Case"
+    ],
+    "dates": [
+      "2025-12-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1455
+  },
+  {
+    "documentId": "DOC-084",
+    "title": "[리뷰] PaymentService transaction 범위",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "김도윤",
+      "노태윤"
+    ],
+    "concepts": [
+      "Transaction",
+      "외부 호출",
+      "Rollback"
+    ],
+    "dates": [
+      "2025-12-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1337
+  },
+  {
+    "documentId": "DOC-085",
+    "title": "결제 취소 API v2 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제 취소",
+      "부분 취소",
+      "환불"
+    ],
+    "participants": [],
+    "concepts": [
+      "부분 취소",
+      "멱등성",
+      "Error Code"
+    ],
+    "dates": [
+      "2025-12-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1303
+  },
+  {
+    "documentId": "DOC-086",
+    "title": "Falcon Sprint 1 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "일정",
+      "Blocker"
+    ],
+    "dates": [
+      "2025-12-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 641
+  },
+  {
+    "documentId": "DOC-087",
+    "title": "2025 배포 규칙",
+    "department": "DevOps팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "배포",
+      "팀 규칙",
+      "롤백"
+    ],
+    "dates": [
+      "2025-12-22"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 643
+  },
+  {
+    "documentId": "DOC-088",
+    "title": "결제 로그 조회 방법",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "운영 대응",
+      "로그",
+      "추적"
+    ],
+    "dates": [
+      "2025-12-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 947
+  },
+  {
+    "documentId": "DOC-089",
+    "title": "연말 트래픽 구간 결제 응답 지연",
+    "department": "DevOps팀",
+    "documentType": "이슈 정리",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "오세훈"
+    ],
+    "concepts": [
+      "부하",
+      "커넥션 풀",
+      "Timeout"
+    ],
+    "dates": [
+      "2025-12-29"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 941
+  },
+  {
+    "documentId": "DOC-090",
+    "title": "주문 취소 가능 시간 정책 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문 취소",
+      "결제 취소"
+    ],
+    "participants": [
+      "강민재",
+      "노태윤"
+    ],
+    "concepts": [
+      "정책",
+      "배송",
+      "기술적 제약"
+    ],
+    "dates": [
+      "2026-01-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 851
+  },
+  {
+    "documentId": "DOC-091",
+    "title": "QA 중 동일 주문 2회 승인 확인",
+    "department": "QA팀",
+    "documentType": "이슈 정리",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "윤수빈",
+      "김도윤"
+    ],
+    "concepts": [
+      "중복 요청",
+      "멱등성",
+      "Race Condition"
+    ],
+    "dates": [
+      "2026-01-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 925
+  },
+  {
+    "documentId": "DOC-092",
+    "title": "중복 방지 키 생성 주체와 범위 정리",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "김도윤",
+      "한지민",
+      "정하늘"
+    ],
+    "concepts": [
+      "멱등성",
+      "클라이언트 협의",
+      "재시도"
+    ],
+    "dates": [
+      "2026-01-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 907
+  },
+  {
+    "documentId": "DOC-093",
+    "title": "결제 멱등성 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "멱등성",
+      "동시성",
+      "Edge Case",
+      "재시도"
+    ],
+    "dates": [
+      "2026-01-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1491
+  },
+  {
+    "documentId": "DOC-094",
+    "title": "[리뷰] 멱등 레코드 저장 및 정리",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "노태윤",
+      "김도윤"
+    ],
+    "concepts": [
+      "멱등성",
+      "Transaction",
+      "동시성"
+    ],
+    "dates": [
+      "2026-01-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1328
+  },
+  {
+    "documentId": "DOC-095",
+    "title": "결제 승인 API v2.1 변경 내역",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "멱등성",
+      "버전 변경",
+      "Error Code"
+    ],
+    "dates": [
+      "2026-01-22"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 941
+  },
+  {
+    "documentId": "DOC-096",
+    "title": "중복 방지 키 충돌로 정상 결제가 차단되는 사례",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "멱등성",
+      "Edge Case",
+      "클라이언트"
+    ],
+    "dates": [
+      "2026-01-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 852
+  },
+  {
+    "documentId": "DOC-097",
+    "title": "Falcon Sprint 3 - QA 진입 전 확인사항",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "결제",
+      "결제 취소"
+    ],
+    "participants": [
+      "임채원",
+      "윤수빈"
+    ],
+    "concepts": [
+      "QA",
+      "체크리스트",
+      "Blocker"
+    ],
+    "dates": [
+      "2026-01-30"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 827
+  },
+  {
+    "documentId": "DOC-098",
+    "title": "부분 취소 시 적립 회수 기준 확정",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "부분 취소",
+      "리워드 회수",
+      "환불"
+    ],
+    "participants": [
+      "강민재",
+      "송지은"
+    ],
+    "concepts": [
+      "부분 취소",
+      "배분",
+      "정책 확정"
+    ],
+    "dates": [
+      "2026-02-03"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 987
+  },
+  {
+    "documentId": "DOC-099",
+    "title": "부분 취소 및 환불 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "부분 취소",
+      "환불",
+      "리워드 회수"
+    ],
+    "participants": [],
+    "concepts": [
+      "부분 취소",
+      "배분",
+      "보상 처리",
+      "Edge Case"
+    ],
+    "dates": [
+      "2026-02-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1386
+  },
+  {
+    "documentId": "DOC-100",
+    "title": "order / order_item 구조 검토",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문",
+      "부분 취소"
+    ],
+    "participants": [],
+    "concepts": [
+      "부분 취소",
+      "상태값 관리",
+      "Index",
+      "정합성"
+    ],
+    "dates": [
+      "2026-02-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1540
+  },
+  {
+    "documentId": "DOC-101",
+    "title": "[리뷰] 부분 취소 금액 배분 계산",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "부분 취소"
+    ],
+    "participants": [
+      "노태윤",
+      "박준호"
+    ],
+    "concepts": [
+      "배분",
+      "단수 처리",
+      "정합성"
+    ],
+    "dates": [
+      "2026-02-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1137
+  },
+  {
+    "documentId": "DOC-102",
+    "title": "환불 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "AIMS"
+    ],
+    "features": [
+      "환불",
+      "결제 취소"
+    ],
+    "participants": [],
+    "concepts": [
+      "환불",
+      "수동 처리",
+      "승인"
+    ],
+    "dates": [
+      "2026-02-17"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1226
+  },
+  {
+    "documentId": "DOC-103",
+    "title": "PG 지연 후 동일 주문 이중 승인",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "Timeout",
+      "중복 요청",
+      "보정 배치"
+    ],
+    "dates": [
+      "2026-02-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1104
+  },
+  {
+    "documentId": "DOC-104",
+    "title": "결제 보정 배치 운영 기준 정리",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "김도윤",
+      "오세훈"
+    ],
+    "concepts": [
+      "보정 배치",
+      "운영 대응",
+      "알림"
+    ],
+    "dates": [
+      "2026-02-24"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 846
+  },
+  {
+    "documentId": "DOC-105",
+    "title": "Falcon Sprint 4 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "결제",
+      "부분 취소"
+    ],
+    "participants": [],
+    "concepts": [
+      "일정",
+      "Risk",
+      "QA"
+    ],
+    "dates": [
+      "2026-02-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 674
+  },
+  {
+    "documentId": "DOC-106",
+    "title": "부분 취소 반환 금액이 1원 어긋나는 사례",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "부분 취소",
+      "환불"
+    ],
+    "participants": [],
+    "concepts": [
+      "단수 처리",
+      "배분",
+      "정합성"
+    ],
+    "dates": [
+      "2026-03-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 995
+  },
+  {
+    "documentId": "DOC-107",
+    "title": "Falcon 배포 후 회고",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "결제",
+      "결제 취소",
+      "부분 취소"
+    ],
+    "participants": [
+      "임채원",
+      "김도윤",
+      "강민재"
+    ],
+    "concepts": [
+      "회고",
+      "멱등성",
+      "일정"
+    ],
+    "dates": [
+      "2026-03-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 988
+  },
+  {
+    "documentId": "DOC-108",
+    "title": "결제 장애 대응 절차",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "장애 대응",
+      "운영",
+      "에스컬레이션"
+    ],
+    "dates": [
+      "2026-03-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 844
+  },
+  {
+    "documentId": "DOC-109",
+    "title": "2026 코드리뷰 규칙",
+    "department": "백엔드개발팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "코드리뷰",
+      "PR",
+      "팀 규칙"
+    ],
+    "dates": [
+      "2026-03-30"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 906
+  },
+  {
+    "documentId": "DOC-110",
+    "title": "Admin 개편 요구사항 수집",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리",
+      "회원 조회"
+    ],
+    "participants": [
+      "강민재",
+      "문가영"
+    ],
+    "concepts": [
+      "요구사항",
+      "운영 효율",
+      "권한"
+    ],
+    "dates": [
+      "2026-04-01"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 795
+  },
+  {
+    "documentId": "DOC-111",
+    "title": "Atlas 킥오프 - AIMS 개편 범위",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS",
+      "NEXUS",
+      "ORBIT"
+    ],
+    "features": [
+      "운영 관리",
+      "권한"
+    ],
+    "participants": [
+      "노태윤",
+      "임채원"
+    ],
+    "concepts": [
+      "범위 산정",
+      "권한",
+      "감사 로그"
+    ],
+    "dates": [
+      "2026-04-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 843
+  },
+  {
+    "documentId": "DOC-112",
+    "title": "AIMS 권한 모델 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS",
+      "BlueGate"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "RBAC",
+      "권한 평가",
+      "Edge Case"
+    ],
+    "dates": [
+      "2026-04-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1309
+  },
+  {
+    "documentId": "DOC-113",
+    "title": "admin_user / admin_role 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "RBAC",
+      "Index",
+      "이력"
+    ],
+    "dates": [
+      "2026-04-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1655
+  },
+  {
+    "documentId": "DOC-114",
+    "title": "Admin 회원 조회 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS",
+      "NEXUS"
+    ],
+    "features": [
+      "회원 조회",
+      "권한"
+    ],
+    "participants": [],
+    "concepts": [
+      "권한",
+      "마스킹",
+      "감사 로그"
+    ],
+    "dates": [
+      "2026-04-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1157
+  },
+  {
+    "documentId": "DOC-115",
+    "title": "[리뷰] 권한 검사 인터셉터 구현",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한"
+    ],
+    "participants": [
+      "노태윤",
+      "조아름"
+    ],
+    "concepts": [
+      "RBAC",
+      "보안",
+      "캐시"
+    ],
+    "dates": [
+      "2026-04-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1003
+  },
+  {
+    "documentId": "DOC-116",
+    "title": "운영자 회원 검색이 10초 이상 걸리는 문제",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS",
+      "NEXUS"
+    ],
+    "features": [
+      "회원 조회"
+    ],
+    "participants": [],
+    "concepts": [
+      "Slow Query",
+      "Index",
+      "조회 성능"
+    ],
+    "dates": [
+      "2026-04-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1001
+  },
+  {
+    "documentId": "DOC-117",
+    "title": "감사 이력 대상 범위 논의",
+    "department": "정보보안팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리",
+      "권한"
+    ],
+    "participants": [
+      "조아름",
+      "노태윤"
+    ],
+    "concepts": [
+      "감사 로그",
+      "개인정보",
+      "보관 기간"
+    ],
+    "dates": [
+      "2026-04-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 878
+  },
+  {
+    "documentId": "DOC-118",
+    "title": "Admin 강제 환불 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS",
+      "ORBIT"
+    ],
+    "features": [
+      "강제 환불",
+      "환불",
+      "권한"
+    ],
+    "participants": [],
+    "concepts": [
+      "승인",
+      "감사 로그",
+      "권한"
+    ],
+    "dates": [
+      "2026-04-30"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1259
+  },
+  {
+    "documentId": "DOC-119",
+    "title": "강제 환불 승인 단계 조정 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "강제 환불",
+      "운영 관리"
+    ],
+    "participants": [
+      "강민재",
+      "문가영"
+    ],
+    "concepts": [
+      "승인",
+      "운영 효율",
+      "정책"
+    ],
+    "dates": [
+      "2026-05-07"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 913
+  },
+  {
+    "documentId": "DOC-120",
+    "title": "Atlas Sprint 1 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "회원 조회"
+    ],
+    "participants": [],
+    "concepts": [
+      "일정",
+      "Blocker"
+    ],
+    "dates": [
+      "2026-05-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 674
+  },
+  {
+    "documentId": "DOC-121",
+    "title": "[리뷰] 감사 로그 적재 방식",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리"
+    ],
+    "participants": [
+      "노태윤",
+      "배현우"
+    ],
+    "concepts": [
+      "감사 로그",
+      "성능",
+      "Transaction"
+    ],
+    "dates": [
+      "2026-05-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1046
+  },
+  {
+    "documentId": "DOC-122",
+    "title": "감사 이력 적재로 응답 시간 증가",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리",
+      "회원 조회"
+    ],
+    "participants": [],
+    "concepts": [
+      "성능",
+      "감사 로그",
+      "비동기"
+    ],
+    "dates": [
+      "2026-05-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 730
+  },
+  {
+    "documentId": "DOC-123",
+    "title": "강제 환불 요청 및 승인 흐름 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS",
+      "ORBIT"
+    ],
+    "features": [
+      "강제 환불",
+      "환불",
+      "권한"
+    ],
+    "participants": [],
+    "concepts": [
+      "승인",
+      "상태 전이",
+      "Edge Case",
+      "감사 로그"
+    ],
+    "dates": [
+      "2026-05-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1383
+  },
+  {
+    "documentId": "DOC-124",
+    "title": "AIMS 고객 조회 및 조치 사용법",
+    "department": "고객지원팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "AIMS",
+      "NEXUS"
+    ],
+    "features": [
+      "회원 조회",
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "운영",
+      "권한",
+      "개인정보"
+    ],
+    "dates": [
+      "2026-05-26"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 870
+  },
+  {
+    "documentId": "DOC-125",
+    "title": "Atlas Sprint 2 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "강제 환불",
+      "운영 관리"
+    ],
+    "participants": [
+      "임채원"
+    ],
+    "concepts": [
+      "일정",
+      "Blocker",
+      "Risk"
+    ],
+    "dates": [
+      "2026-05-29"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 639
+  },
+  {
+    "documentId": "DOC-126",
+    "title": "AIMS 계정 역할 매핑 확정",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [
+      "노태윤",
+      "문가영",
+      "조아름"
+    ],
+    "concepts": [
+      "권한",
+      "마이그레이션",
+      "최소 권한"
+    ],
+    "dates": [
+      "2026-06-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1097
+  },
+  {
+    "documentId": "DOC-127",
+    "title": "audit_log 테이블 설계와 보관 전략",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "감사 로그",
+      "파티션",
+      "보관 기간",
+      "Index"
+    ],
+    "dates": [
+      "2026-06-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1662
+  },
+  {
+    "documentId": "DOC-128",
+    "title": "Admin 주문 조회 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS",
+      "ORBIT"
+    ],
+    "features": [
+      "주문 조회",
+      "권한"
+    ],
+    "participants": [],
+    "concepts": [
+      "권한",
+      "조회 성능",
+      "페이징"
+    ],
+    "dates": [
+      "2026-06-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1471
+  },
+  {
+    "documentId": "DOC-129",
+    "title": "배포 후 일부 AIMS 기능이 권한 없음으로 차단",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "권한",
+      "배포",
+      "회귀"
+    ],
+    "dates": [
+      "2026-06-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 945
+  },
+  {
+    "documentId": "DOC-130",
+    "title": "Atlas 배포 준비 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리",
+      "강제 환불"
+    ],
+    "participants": [],
+    "concepts": [
+      "배포",
+      "QA",
+      "롤백"
+    ],
+    "dates": [
+      "2026-06-17"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 820
+  },
+  {
+    "documentId": "DOC-131",
+    "title": "On-call 운영 방법",
+    "department": "DevOps팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "장애 대응",
+      "팀 규칙",
+      "에스컬레이션"
+    ],
+    "dates": [
+      "2026-06-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 773
+  },
+  {
+    "documentId": "DOC-132",
+    "title": "운영 DB 접근 절차",
+    "department": "DevOps팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "운영",
+      "보안",
+      "승인"
+    ],
+    "dates": [
+      "2026-06-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 824
+  },
+  {
+    "documentId": "DOC-133",
+    "title": "Atlas 배포 후 운영 이슈 점검",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [
+      "노태윤",
+      "문가영"
+    ],
+    "concepts": [
+      "운영",
+      "권한",
+      "감사 로그"
+    ],
+    "dates": [
+      "2026-06-30"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1025
+  },
+  {
+    "documentId": "DOC-134",
+    "title": "통합 조회 화면 범위 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리",
+      "회원 조회",
+      "주문 조회"
+    ],
+    "participants": [
+      "강민재",
+      "최유진"
+    ],
+    "concepts": [
+      "요구사항",
+      "프론트 작업량",
+      "우선순위"
+    ],
+    "dates": [
+      "2026-07-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 859
+  },
+  {
+    "documentId": "DOC-135",
+    "title": "Atlas 배포 후 회고",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리",
+      "강제 환불"
+    ],
+    "participants": [
+      "임채원",
+      "노태윤"
+    ],
+    "concepts": [
+      "회고",
+      "권한",
+      "일정"
+    ],
+    "dates": [
+      "2026-07-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 876
+  },
+  {
+    "documentId": "DOC-136",
+    "title": "캐시 서버 연결 수가 계속 늘어나는 현상",
+    "department": "DevOps팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "BlueGate"
+    ],
+    "features": [],
+    "participants": [
+      "오세훈"
+    ],
+    "concepts": [
+      "커넥션 누수",
+      "캐시",
+      "메모리"
+    ],
+    "dates": [
+      "2025-06-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1024
+  },
+  {
+    "documentId": "DOC-137",
+    "title": "주문 저장 중 교착 상태 반복 발생",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "Deadlock",
+      "락 순서",
+      "재시도"
+    ],
+    "dates": [
+      "2025-09-30"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1158
+  },
+  {
+    "documentId": "DOC-138",
+    "title": "공통 캐시 사용 기준 정리",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [],
+    "participants": [
+      "오세훈",
+      "김도윤"
+    ],
+    "concepts": [
+      "캐시",
+      "TTL",
+      "정합성"
+    ],
+    "dates": [
+      "2025-10-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 949
+  },
+  {
+    "documentId": "DOC-139",
+    "title": "로그 조회 방법",
+    "department": "DevOps팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "로그",
+      "운영",
+      "추적"
+    ],
+    "dates": [
+      "2025-11-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1009
+  },
+  {
+    "documentId": "DOC-140",
+    "title": "Git Branch 전략",
+    "department": "백엔드개발팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "Git",
+      "배포",
+      "팀 규칙"
+    ],
+    "dates": [
+      "2025-05-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 862
+  },
+  {
+    "documentId": "DOC-141",
+    "title": "Commit Message 규칙",
+    "department": "백엔드개발팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "Git",
+      "팀 규칙"
+    ],
+    "dates": [
+      "2025-05-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 831
+  },
+  {
+    "documentId": "DOC-142",
+    "title": "[리뷰] 공통 예외 처리 구조",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [],
+    "participants": [
+      "김도윤",
+      "이서연"
+    ],
+    "concepts": [
+      "예외 처리",
+      "Error Code",
+      "공통 모듈"
+    ],
+    "dates": [
+      "2025-12-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1021
+  },
+  {
+    "documentId": "DOC-143",
+    "title": "서비스 간 통신 방식 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate"
+    ],
+    "features": [],
+    "participants": [
+      "김도윤",
+      "오세훈",
+      "노태윤"
+    ],
+    "concepts": [
+      "서비스 간 호출",
+      "이벤트",
+      "장애 전파"
+    ],
+    "dates": [
+      "2026-01-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 971
+  },
+  {
+    "documentId": "DOC-144",
+    "title": "서비스 간 호출 재시도 및 타임아웃 기준",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "재시도",
+      "Timeout",
+      "멱등성",
+      "장애 전파"
+    ],
+    "dates": [
+      "2026-01-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1206
+  },
+  {
+    "documentId": "DOC-145",
+    "title": "내부 서비스 토큰 발급 API 명세",
+    "department": "플랫폼개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증",
+      "권한"
+    ],
+    "participants": [],
+    "concepts": [
+      "서비스 토큰",
+      "권한",
+      "만료"
+    ],
+    "dates": [
+      "2026-02-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1034
+  },
+  {
+    "documentId": "DOC-146",
+    "title": "배포 도중 일부 요청이 응답 없이 끊기는 문제",
+    "department": "DevOps팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [
+      "오세훈"
+    ],
+    "concepts": [
+      "배포",
+      "graceful shutdown",
+      "요청 유실"
+    ],
+    "dates": [
+      "2026-03-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 905
+  },
+  {
+    "documentId": "DOC-147",
+    "title": "[리뷰] 비동기 작업 종료 처리",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "AIMS",
+      "ORBIT"
+    ],
+    "features": [],
+    "participants": [
+      "오세훈",
+      "노태윤"
+    ],
+    "concepts": [
+      "graceful shutdown",
+      "비동기",
+      "유실"
+    ],
+    "dates": [
+      "2026-03-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 889
+  },
+  {
+    "documentId": "DOC-148",
+    "title": "Feature Flag 운영 방법",
+    "department": "DevOps팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "Feature Flag",
+      "배포",
+      "운영"
+    ],
+    "dates": [
+      "2026-04-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 844
+  },
+  {
+    "documentId": "DOC-149",
+    "title": "알림 발송 채널 정책 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [
+      "송지은",
+      "한지민"
+    ],
+    "concepts": [
+      "알림",
+      "수신 동의",
+      "정책"
+    ],
+    "dates": [
+      "2026-05-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 987
+  },
+  {
+    "documentId": "DOC-150",
+    "title": "notification 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "알림",
+      "발송 이력",
+      "Index",
+      "보관 기간"
+    ],
+    "dates": [
+      "2026-05-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1688
+  },
+  {
+    "documentId": "DOC-151",
+    "title": "카트 담기 및 유지 정책",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문",
+      "상품"
+    ],
+    "participants": [
+      "강민재",
+      "최유진"
+    ],
+    "concepts": [
+      "정책",
+      "비회원",
+      "보관 기간"
+    ],
+    "dates": [
+      "2025-08-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 821
+  },
+  {
+    "documentId": "DOC-152",
+    "title": "주문 생성 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "MARS",
+      "NEXUS"
+    ],
+    "features": [
+      "주문",
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "Transaction",
+      "재고",
+      "Edge Case",
+      "동시성"
+    ],
+    "dates": [
+      "2025-09-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1212
+  },
+  {
+    "documentId": "DOC-153",
+    "title": "주문 생성 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "Validation",
+      "Error Code",
+      "금액 검증"
+    ],
+    "dates": [
+      "2025-09-24"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1433
+  },
+  {
+    "documentId": "DOC-154",
+    "title": "주문 조회 API v2 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "조회 성능",
+      "페이징",
+      "버전 변경"
+    ],
+    "dates": [
+      "2025-10-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1018
+  },
+  {
+    "documentId": "DOC-155",
+    "title": "product / product_stock 테이블 분리",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품",
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "테이블 분리",
+      "동시성",
+      "Index"
+    ],
+    "dates": [
+      "2025-10-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1661
+  },
+  {
+    "documentId": "DOC-156",
+    "title": "한정 수량 상품에서 재고보다 많은 주문 접수",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문",
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "동시성",
+      "재고",
+      "Race Condition"
+    ],
+    "dates": [
+      "2025-11-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 985
+  },
+  {
+    "documentId": "DOC-157",
+    "title": "재고 차감 및 복원 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품",
+      "주문",
+      "주문 취소"
+    ],
+    "participants": [],
+    "concepts": [
+      "동시성",
+      "재고",
+      "Edge Case",
+      "보상 처리"
+    ],
+    "dates": [
+      "2025-11-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1478
+  },
+  {
+    "documentId": "DOC-158",
+    "title": "[리뷰] 재고 차감 조건부 갱신 적용",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품",
+      "주문"
+    ],
+    "participants": [
+      "노태윤",
+      "김도윤"
+    ],
+    "concepts": [
+      "동시성",
+      "재고",
+      "이력"
+    ],
+    "dates": [
+      "2025-11-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1069
+  },
+  {
+    "documentId": "DOC-159",
+    "title": "품절 상품 노출 기준 논의",
+    "department": "프론트엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [
+      "강민재",
+      "정하늘"
+    ],
+    "concepts": [
+      "UX",
+      "재고",
+      "정책"
+    ],
+    "dates": [
+      "2025-12-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 875
+  },
+  {
+    "documentId": "DOC-160",
+    "title": "[리뷰] 주문서 화면 상태 관리 정리",
+    "department": "프론트엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Falcon",
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문",
+      "결제"
+    ],
+    "participants": [
+      "최유진",
+      "정하늘"
+    ],
+    "concepts": [
+      "상태 관리",
+      "멱등성",
+      "UX"
+    ],
+    "dates": [
+      "2026-01-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 994
+  },
+  {
+    "documentId": "DOC-161",
+    "title": "일부 안드로이드 기기에서 주문서가 비어 보이는 문제",
+    "department": "모바일개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [
+      "한지민"
+    ],
+    "concepts": [
+      "클라이언트",
+      "캐시",
+      "호환성"
+    ],
+    "dates": [
+      "2026-02-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 936
+  },
+  {
+    "documentId": "DOC-162",
+    "title": "모바일 앱 배포 절차",
+    "department": "모바일개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "배포",
+      "앱 심사",
+      "롤백"
+    ],
+    "dates": [
+      "2026-02-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 928
+  },
+  {
+    "documentId": "DOC-163",
+    "title": "앱 강제 업데이트 적용 기준",
+    "department": "모바일개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "한지민",
+      "임채원"
+    ],
+    "concepts": [
+      "앱 배포",
+      "정책",
+      "하위 호환"
+    ],
+    "dates": [
+      "2026-03-03"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 823
+  },
+  {
+    "documentId": "DOC-164",
+    "title": "앱 버전 확인 API 명세",
+    "department": "모바일개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "앱 배포",
+      "버전 관리"
+    ],
+    "dates": [
+      "2026-03-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1012
+  },
+  {
+    "documentId": "DOC-165",
+    "title": "2026 상반기 기술 부채 정리 현황",
+    "department": "백엔드개발팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "기술 부채",
+      "우선순위"
+    ],
+    "dates": [
+      "2026-06-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 982
+  },
+  {
+    "documentId": "DOC-166",
+    "title": "고객 등급별 적립률 개편 요구사항",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "NEXUS"
+    ],
+    "features": [
+      "리워드 지급",
+      "포인트"
+    ],
+    "participants": [
+      "강민재",
+      "박준호"
+    ],
+    "concepts": [
+      "등급",
+      "적립률",
+      "기술적 제약"
+    ],
+    "dates": [
+      "2026-01-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 914
+  },
+  {
+    "documentId": "DOC-167",
+    "title": "등급 산정 기준 기술 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [
+      "박준호",
+      "배현우"
+    ],
+    "concepts": [
+      "배치",
+      "집계",
+      "정합성"
+    ],
+    "dates": [
+      "2026-01-26"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 881
+  },
+  {
+    "documentId": "DOC-168",
+    "title": "재입고 알림 기능 요건 정리",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "NEXUS"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [
+      "강민재",
+      "정하늘"
+    ],
+    "concepts": [
+      "알림",
+      "요구사항",
+      "동시성"
+    ],
+    "dates": [
+      "2026-01-29"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 822
+  },
+  {
+    "documentId": "DOC-169",
+    "title": "재입고 알림 처리 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "NEXUS"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "알림",
+      "배치",
+      "동시성",
+      "Edge Case"
+    ],
+    "dates": [
+      "2026-02-04"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1239
+  },
+  {
+    "documentId": "DOC-170",
+    "title": "리뷰 작성 리워드 정책 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS",
+      "ORBIT"
+    ],
+    "features": [
+      "리워드 지급",
+      "포인트"
+    ],
+    "participants": [
+      "송지은",
+      "박준호"
+    ],
+    "concepts": [
+      "어뷰징",
+      "정책",
+      "중복 지급"
+    ],
+    "dates": [
+      "2026-02-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 836
+  },
+  {
+    "documentId": "DOC-171",
+    "title": "분석용 데이터 적재 파이프라인 개선",
+    "department": "데이터팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "MARS",
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "집계",
+      "파이프라인",
+      "지연"
+    ],
+    "dates": [
+      "2026-02-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 929
+  },
+  {
+    "documentId": "DOC-172",
+    "title": "member_grade 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트",
+      "리워드 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "등급",
+      "이력",
+      "Index"
+    ],
+    "dates": [
+      "2026-02-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1358
+  },
+  {
+    "documentId": "DOC-173",
+    "title": "[리뷰] 등급 산정 배치 구현",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [
+      "박준호",
+      "배현우"
+    ],
+    "concepts": [
+      "배치",
+      "등급",
+      "재실행"
+    ],
+    "dates": [
+      "2026-02-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1104
+  },
+  {
+    "documentId": "DOC-174",
+    "title": "회원 등급 조회 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [],
+    "concepts": [
+      "등급",
+      "조회"
+    ],
+    "dates": [
+      "2026-03-04"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1052
+  },
+  {
+    "documentId": "DOC-175",
+    "title": "선착순 쿠폰 발급 요건 정리",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "쿠폰 지급"
+    ],
+    "participants": [
+      "강민재",
+      "송지은"
+    ],
+    "concepts": [
+      "선착순",
+      "동시성",
+      "요구사항"
+    ],
+    "dates": [
+      "2026-03-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 817
+  },
+  {
+    "documentId": "DOC-176",
+    "title": "선착순 발급 동시성 처리 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "쿠폰 지급"
+    ],
+    "participants": [
+      "박준호",
+      "김도윤"
+    ],
+    "concepts": [
+      "동시성",
+      "선착순",
+      "Redis"
+    ],
+    "dates": [
+      "2026-03-17"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1055
+  },
+  {
+    "documentId": "DOC-177",
+    "title": "선착순 쿠폰 발급 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "쿠폰 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "선착순",
+      "동시성",
+      "보상 처리",
+      "Edge Case"
+    ],
+    "dates": [
+      "2026-03-24"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1386
+  },
+  {
+    "documentId": "DOC-178",
+    "title": "3월 등급 산정 결과가 일부 회원에서 누락",
+    "department": "데이터팀",
+    "documentType": "이슈 정리",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트"
+    ],
+    "participants": [],
+    "concepts": [
+      "배치",
+      "집계",
+      "정합성"
+    ],
+    "dates": [
+      "2026-04-01"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1091
+  },
+  {
+    "documentId": "DOC-179",
+    "title": "리워드 2차 개선 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Nova",
+    "entities": [
+      "MARS"
+    ],
+    "features": [
+      "포인트",
+      "쿠폰 지급",
+      "리워드 지급"
+    ],
+    "participants": [
+      "임채원",
+      "박준호"
+    ],
+    "concepts": [
+      "일정",
+      "Risk"
+    ],
+    "dates": [
+      "2026-04-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 604
+  },
+  {
+    "documentId": "DOC-180",
+    "title": "이벤트 쿠폰 등록 및 발급 절차",
+    "department": "서비스기획팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "MARS",
+      "AIMS"
+    ],
+    "features": [
+      "쿠폰 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "운영",
+      "쿠폰",
+      "체크리스트"
+    ],
+    "dates": [
+      "2026-04-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 962
+  },
+  {
+    "documentId": "DOC-181",
+    "title": "[리뷰] 회원 프로필 캐시 무효화 추가",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "프로필"
+    ],
+    "participants": [
+      "이서연",
+      "김도윤"
+    ],
+    "concepts": [
+      "캐시",
+      "정합성",
+      "이벤트"
+    ],
+    "dates": [
+      "2025-10-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 959
+  },
+  {
+    "documentId": "DOC-182",
+    "title": "[리뷰] 주문 목록 조회 쿼리 분리",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [
+      "노태윤",
+      "배현우"
+    ],
+    "concepts": [
+      "Query 최적화",
+      "N+1",
+      "Index"
+    ],
+    "dates": [
+      "2026-01-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 989
+  },
+  {
+    "documentId": "DOC-183",
+    "title": "테스트 코드 작성 기준 논의",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "김도윤",
+      "이서연",
+      "윤수빈"
+    ],
+    "concepts": [
+      "테스트",
+      "팀 규칙",
+      "커버리지"
+    ],
+    "dates": [
+      "2025-07-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 866
+  },
+  {
+    "documentId": "DOC-184",
+    "title": "PR 작성 규칙",
+    "department": "백엔드개발팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "PR",
+      "코드리뷰",
+      "팀 규칙"
+    ],
+    "dates": [
+      "2026-04-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 886
+  },
+  {
+    "documentId": "DOC-185",
+    "title": "[리뷰] 알림 발송 큐 재시도 처리",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [
+      "노태윤",
+      "오세훈"
+    ],
+    "concepts": [
+      "재시도",
+      "비동기",
+      "중복"
+    ],
+    "dates": [
+      "2026-06-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1060
+  },
+  {
+    "documentId": "DOC-186",
+    "title": "shipping / shipping_tracking 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "외부 연동",
+      "이력",
+      "Index"
+    ],
+    "dates": [
+      "2025-12-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1763
+  },
+  {
+    "documentId": "DOC-187",
+    "title": "배송 조회 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "외부 연동",
+      "캐시",
+      "부분 배송"
+    ],
+    "dates": [
+      "2026-01-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1397
+  },
+  {
+    "documentId": "DOC-188",
+    "title": "배송 상태 동기화 방식 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [
+      "노태윤",
+      "오세훈"
+    ],
+    "concepts": [
+      "외부 연동",
+      "폴링",
+      "Webhook"
+    ],
+    "dates": [
+      "2025-12-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 922
+  },
+  {
+    "documentId": "DOC-189",
+    "title": "일부 주문에서 배송 상태가 갱신되지 않음",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "외부 연동",
+      "폴링",
+      "예외 처리"
+    ],
+    "dates": [
+      "2026-02-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1113
+  },
+  {
+    "documentId": "DOC-190",
+    "title": "배송 지연 안내 기준 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [
+      "강민재",
+      "문가영"
+    ],
+    "concepts": [
+      "알림",
+      "정책",
+      "고객 문의"
+    ],
+    "dates": [
+      "2026-03-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 875
+  },
+  {
+    "documentId": "DOC-191",
+    "title": "[리뷰] 배송 상태 폴링 스케줄러",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [
+      "노태윤",
+      "김도윤"
+    ],
+    "concepts": [
+      "배치",
+      "외부 연동",
+      "재시도"
+    ],
+    "dates": [
+      "2026-03-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1003
+  },
+  {
+    "documentId": "DOC-192",
+    "title": "배송 문의 대응 가이드",
+    "department": "고객지원팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "AIMS"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "운영",
+      "고객 문의",
+      "배송"
+    ],
+    "dates": [
+      "2026-04-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 915
+  },
+  {
+    "documentId": "DOC-193",
+    "title": "배송 연동 개선 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "일정",
+      "외부 연동",
+      "Risk"
+    ],
+    "dates": [
+      "2026-04-28"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 655
+  },
+  {
+    "documentId": "DOC-194",
+    "title": "배송지 변경 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "Validation",
+      "상태 전이",
+      "제약"
+    ],
+    "dates": [
+      "2026-05-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1217
+  },
+  {
+    "documentId": "DOC-195",
+    "title": "배송지 변경 가능 시점 논의",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [
+      "노태윤",
+      "강민재"
+    ],
+    "concepts": [
+      "정책",
+      "판매자 연동",
+      "기술적 제약"
+    ],
+    "dates": [
+      "2026-04-30"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 926
+  },
+  {
+    "documentId": "DOC-196",
+    "title": "order_summary 집계 테이블 설계",
+    "department": "데이터팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "집계",
+      "파이프라인",
+      "정합성"
+    ],
+    "dates": [
+      "2026-02-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1518
+  },
+  {
+    "documentId": "DOC-197",
+    "title": "review / review_image 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "리워드 지급",
+      "Unique Constraint",
+      "이미지"
+    ],
+    "dates": [
+      "2026-03-31"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1742
+  },
+  {
+    "documentId": "DOC-198",
+    "title": "리뷰 작성 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [
+      "상품",
+      "리워드 지급"
+    ],
+    "participants": [],
+    "concepts": [
+      "Validation",
+      "리워드 지급",
+      "Error Code"
+    ],
+    "dates": [
+      "2026-04-03"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1303
+  },
+  {
+    "documentId": "DOC-199",
+    "title": "리뷰 사진 첨부가 간헐적으로 실패",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "이미지",
+      "외부 저장소",
+      "타임아웃"
+    ],
+    "dates": [
+      "2026-04-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1082
+  },
+  {
+    "documentId": "DOC-200",
+    "title": "[리뷰] 리뷰 이미지 업로드 처리",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [
+      "정하늘",
+      "오세훈"
+    ],
+    "concepts": [
+      "이미지",
+      "임시 파일",
+      "정리 배치"
+    ],
+    "dates": [
+      "2026-04-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1022
+  },
+  {
+    "documentId": "DOC-201",
+    "title": "리뷰 노출 정렬 기준 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [
+      "송지은",
+      "최유진"
+    ],
+    "concepts": [
+      "정렬",
+      "UX",
+      "어뷰징"
+    ],
+    "dates": [
+      "2026-04-24"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1006
+  },
+  {
+    "documentId": "DOC-202",
+    "title": "inquiry / inquiry_answer 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "문의",
+      "상태값 관리",
+      "Index"
+    ],
+    "dates": [
+      "2025-06-24"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1720
+  },
+  {
+    "documentId": "DOC-203",
+    "title": "문의 등록 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "문의",
+      "비회원",
+      "Validation"
+    ],
+    "dates": [
+      "2025-07-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1241
+  },
+  {
+    "documentId": "DOC-204",
+    "title": "문의 카테고리 재정비",
+    "department": "고객지원팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [
+      "문가영",
+      "강민재"
+    ],
+    "concepts": [
+      "문의",
+      "분류",
+      "운영 효율"
+    ],
+    "dates": [
+      "2025-08-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1075
+  },
+  {
+    "documentId": "DOC-205",
+    "title": "문의 처리 절차",
+    "department": "고객지원팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "문의",
+      "운영",
+      "SLA"
+    ],
+    "dates": [
+      "2025-09-17"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 943
+  },
+  {
+    "documentId": "DOC-206",
+    "title": "category / product_category 구조 검토",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "계층 구조",
+      "Index",
+      "조회 성능"
+    ],
+    "dates": [
+      "2025-04-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1400
+  },
+  {
+    "documentId": "DOC-207",
+    "title": "상품 목록 조회 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "페이징",
+      "정렬",
+      "캐시"
+    ],
+    "dates": [
+      "2025-05-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1295
+  },
+  {
+    "documentId": "DOC-208",
+    "title": "상품 검색 개선 방향 논의",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [
+      "배현우",
+      "최유진"
+    ],
+    "concepts": [
+      "검색",
+      "형태소",
+      "정확도"
+    ],
+    "dates": [
+      "2026-05-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1014
+  },
+  {
+    "documentId": "DOC-209",
+    "title": "특정 검색어에서 상품이 조회되지 않음",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "검색",
+      "인덱스",
+      "정규화"
+    ],
+    "dates": [
+      "2026-05-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1090
+  },
+  {
+    "documentId": "DOC-210",
+    "title": "검색 개선 1차 결과",
+    "department": "데이터팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "검색",
+      "지표",
+      "우선순위"
+    ],
+    "dates": [
+      "2026-06-24"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 904
+  },
+  {
+    "documentId": "DOC-211",
+    "title": "첫 구매 혜택 개편 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "MARS",
+      "NEXUS"
+    ],
+    "features": [
+      "쿠폰 지급",
+      "회원가입"
+    ],
+    "participants": [
+      "강민재",
+      "박준호"
+    ],
+    "concepts": [
+      "어뷰징",
+      "정책",
+      "쿠폰"
+    ],
+    "dates": [
+      "2025-06-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 899
+  },
+  {
+    "documentId": "DOC-212",
+    "title": "카트 품절 상품 처리 방식",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문",
+      "상품"
+    ],
+    "participants": [
+      "강민재",
+      "최유진"
+    ],
+    "concepts": [
+      "UX",
+      "재고",
+      "정책"
+    ],
+    "dates": [
+      "2026-02-17"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 904
+  },
+  {
+    "documentId": "DOC-213",
+    "title": "가입 시 개인정보 수집 항목 축소 검토",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "회원가입"
+    ],
+    "participants": [
+      "송지은",
+      "조아름"
+    ],
+    "concepts": [
+      "개인정보",
+      "최소 수집",
+      "정책"
+    ],
+    "dates": [
+      "2025-12-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 891
+  },
+  {
+    "documentId": "DOC-214",
+    "title": "개인정보 보관 기간 전체 점검",
+    "department": "정보보안팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "AIMS"
+    ],
+    "features": [
+      "회원 탈퇴"
+    ],
+    "participants": [
+      "조아름",
+      "이서연"
+    ],
+    "concepts": [
+      "개인정보",
+      "보관 기간",
+      "삭제 배치"
+    ],
+    "dates": [
+      "2026-01-14"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1024
+  },
+  {
+    "documentId": "DOC-215",
+    "title": "개인정보 취급 시 주의사항",
+    "department": "정보보안팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "개인정보",
+      "보안",
+      "로그"
+    ],
+    "dates": [
+      "2026-01-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1010
+  },
+  {
+    "documentId": "DOC-216",
+    "title": "알림 설정 화면 개편 요건",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [
+      "송지은",
+      "한지민"
+    ],
+    "concepts": [
+      "알림",
+      "수신 동의",
+      "UX"
+    ],
+    "dates": [
+      "2026-06-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 964
+  },
+  {
+    "documentId": "DOC-217",
+    "title": "프론트 공통 컴포넌트 정리 방향",
+    "department": "프론트엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "최유진",
+      "정하늘"
+    ],
+    "concepts": [
+      "컴포넌트",
+      "기술 부채",
+      "일관성"
+    ],
+    "dates": [
+      "2026-05-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 843
+  },
+  {
+    "documentId": "DOC-218",
+    "title": "[리뷰] 공통 버튼 컴포넌트",
+    "department": "프론트엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "최유진",
+      "정하늘"
+    ],
+    "concepts": [
+      "컴포넌트",
+      "접근성",
+      "일관성"
+    ],
+    "dates": [
+      "2026-06-01"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 983
+  },
+  {
+    "documentId": "DOC-219",
+    "title": "스테이징 환경 사용 규칙",
+    "department": "DevOps팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "테스트 환경",
+      "운영",
+      "데이터"
+    ],
+    "dates": [
+      "2025-10-28"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 880
+  },
+  {
+    "documentId": "DOC-220",
+    "title": "2025 하반기 QA 결함 분석",
+    "department": "QA팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "QA",
+      "결함 분석",
+      "테스트"
+    ],
+    "dates": [
+      "2026-01-07"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 960
+  },
+  {
+    "documentId": "DOC-221",
+    "title": "QA 자동화 범위 논의",
+    "department": "QA팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [
+      "윤수빈",
+      "서지호",
+      "김도윤"
+    ],
+    "concepts": [
+      "QA",
+      "자동화",
+      "회귀 테스트"
+    ],
+    "dates": [
+      "2026-02-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 963
+  },
+  {
+    "documentId": "DOC-222",
+    "title": "QA 시나리오 작성 가이드",
+    "department": "QA팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "QA",
+      "테스트",
+      "Edge Case"
+    ],
+    "dates": [
+      "2026-03-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 952
+  },
+  {
+    "documentId": "DOC-223",
+    "title": "상품 상세 화면 개편 요건",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [
+      "강민재",
+      "정하늘"
+    ],
+    "concepts": [
+      "UX",
+      "성능",
+      "요구사항"
+    ],
+    "dates": [
+      "2026-04-17"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 941
+  },
+  {
+    "documentId": "DOC-224",
+    "title": "상품 상세 조회 API v2 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "조회 성능",
+      "버전 변경",
+      "지연 로딩"
+    ],
+    "dates": [
+      "2026-05-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1352
+  },
+  {
+    "documentId": "DOC-225",
+    "title": "상품 상세 개편 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [],
+    "concepts": [
+      "성능",
+      "일정",
+      "지표"
+    ],
+    "dates": [
+      "2026-06-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 733
+  },
+  {
+    "documentId": "DOC-226",
+    "title": "결제 실패 처리 정책",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "에러 처리",
+      "재시도",
+      "정책"
+    ],
+    "dates": [
+      "2026-04-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1194
+  },
+  {
+    "documentId": "DOC-227",
+    "title": "카드사 거절 사유가 안내되지 않는 문제",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "에러 처리",
+      "매핑",
+      "외부 연동"
+    ],
+    "dates": [
+      "2026-04-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1023
+  },
+  {
+    "documentId": "DOC-228",
+    "title": "PG 장애 시 대응 가이드",
+    "department": "DevOps팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "장애 대응",
+      "외부 시스템 장애",
+      "에스컬레이션"
+    ],
+    "dates": [
+      "2026-04-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1219
+  },
+  {
+    "documentId": "DOC-229",
+    "title": "결제 재시도 정책 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "재시도",
+      "멱등성",
+      "Edge Case"
+    ],
+    "dates": [
+      "2026-04-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1249
+  },
+  {
+    "documentId": "DOC-230",
+    "title": "간편결제 수단 추가 도입 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "김도윤",
+      "강민재"
+    ],
+    "concepts": [
+      "결제 수단",
+      "외부 연동",
+      "범위 산정"
+    ],
+    "dates": [
+      "2026-05-04"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 952
+  },
+  {
+    "documentId": "DOC-231",
+    "title": "간편결제 연동 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "결제 수단",
+      "리다이렉트",
+      "콜백"
+    ],
+    "dates": [
+      "2026-05-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1361
+  },
+  {
+    "documentId": "DOC-232",
+    "title": "payment_method 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "결제 수단",
+      "설정",
+      "확장성"
+    ],
+    "dates": [
+      "2026-05-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1306
+  },
+  {
+    "documentId": "DOC-233",
+    "title": "[리뷰] 결제 수단별 전략 분리",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "김도윤",
+      "노태윤"
+    ],
+    "concepts": [
+      "설계",
+      "확장성",
+      "인터페이스"
+    ],
+    "dates": [
+      "2026-05-22"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1138
+  },
+  {
+    "documentId": "DOC-234",
+    "title": "간편결제 승인 직후 취소되는 사례",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "외부 연동",
+      "콜백",
+      "상태 불일치"
+    ],
+    "dates": [
+      "2026-06-03"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1130
+  },
+  {
+    "documentId": "DOC-235",
+    "title": "정기 결제 도입 요건 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "강민재",
+      "김도윤"
+    ],
+    "concepts": [
+      "정기 결제",
+      "요구사항",
+      "정책"
+    ],
+    "dates": [
+      "2026-06-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 882
+  },
+  {
+    "documentId": "DOC-236",
+    "title": "정기 결제 기술 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [
+      "김도윤",
+      "노태윤"
+    ],
+    "concepts": [
+      "정기 결제",
+      "빌링키",
+      "배치"
+    ],
+    "dates": [
+      "2026-06-22"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 984
+  },
+  {
+    "documentId": "DOC-237",
+    "title": "정기 결제 설계 초안",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "정기 결제",
+      "배치",
+      "Edge Case",
+      "멱등성"
+    ],
+    "dates": [
+      "2026-06-26"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1610
+  },
+  {
+    "documentId": "DOC-238",
+    "title": "결제 수단 확대 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "일정",
+      "Risk",
+      "결제 수단"
+    ],
+    "dates": [
+      "2026-07-01"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 765
+  },
+  {
+    "documentId": "DOC-239",
+    "title": "회의 운영 규칙",
+    "department": "프로젝트관리팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "회의",
+      "팀 규칙",
+      "기록"
+    ],
+    "dates": [
+      "2025-03-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 759
+  },
+  {
+    "documentId": "DOC-240",
+    "title": "장애 대응 규칙",
+    "department": "DevOps팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "장애 대응",
+      "팀 규칙",
+      "에스컬레이션"
+    ],
+    "dates": [
+      "2025-11-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 946
+  },
+  {
+    "documentId": "DOC-241",
+    "title": "로그 보관 정책 재검토",
+    "department": "DevOps팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "오세훈",
+      "조아름"
+    ],
+    "concepts": [
+      "로그",
+      "보관 기간",
+      "비용"
+    ],
+    "dates": [
+      "2025-05-07"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 916
+  },
+  {
+    "documentId": "DOC-242",
+    "title": "애플리케이션 로그에 개인정보가 남는 경로 확인",
+    "department": "정보보안팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "개인정보",
+      "로그",
+      "보안"
+    ],
+    "dates": [
+      "2025-06-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1226
+  },
+  {
+    "documentId": "DOC-243",
+    "title": "보안 점검 규칙",
+    "department": "정보보안팀",
+    "documentType": "팀 Ground Rule",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "보안",
+      "팀 규칙",
+      "점검"
+    ],
+    "dates": [
+      "2025-07-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 913
+  },
+  {
+    "documentId": "DOC-244",
+    "title": "민감 데이터 암호화 적용 방안",
+    "department": "정보보안팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "암호화",
+      "개인정보",
+      "키 관리"
+    ],
+    "dates": [
+      "2026-02-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1260
+  },
+  {
+    "documentId": "DOC-245",
+    "title": "데이터 추출 요청 API 명세",
+    "department": "데이터팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "데이터 추출",
+      "권한",
+      "감사"
+    ],
+    "dates": [
+      "2026-03-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1330
+  },
+  {
+    "documentId": "DOC-246",
+    "title": "통계 지표 정의 통일",
+    "department": "데이터팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [],
+    "participants": [
+      "배현우",
+      "임채원"
+    ],
+    "concepts": [
+      "지표",
+      "정의",
+      "정합성"
+    ],
+    "dates": [
+      "2026-03-26"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1123
+  },
+  {
+    "documentId": "DOC-247",
+    "title": "[리뷰] 일별 지표 집계 쿼리",
+    "department": "데이터팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "집계",
+      "Query 최적화",
+      "정합성"
+    ],
+    "dates": [
+      "2026-04-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1288
+  },
+  {
+    "documentId": "DOC-248",
+    "title": "운영 대시보드 지표 요구사항",
+    "department": "프로젝트관리팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리"
+    ],
+    "participants": [
+      "임채원",
+      "배현우"
+    ],
+    "concepts": [
+      "지표",
+      "대시보드",
+      "우선순위"
+    ],
+    "dates": [
+      "2026-04-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 954
+  },
+  {
+    "documentId": "DOC-249",
+    "title": "daily_metrics 집계 테이블 설계",
+    "department": "데이터팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "집계",
+      "지표",
+      "재집계"
+    ],
+    "dates": [
+      "2026-04-22"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1551
+  },
+  {
+    "documentId": "DOC-250",
+    "title": "통계 조회 API 명세",
+    "department": "데이터팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "지표",
+      "권한",
+      "캐시"
+    ],
+    "dates": [
+      "2026-05-11"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1375
+  },
+  {
+    "documentId": "DOC-251",
+    "title": "화면마다 매출 수치가 다르게 보이는 문제",
+    "department": "데이터팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "지표",
+      "정합성",
+      "마이그레이션"
+    ],
+    "dates": [
+      "2026-05-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 970
+  },
+  {
+    "documentId": "DOC-252",
+    "title": "[리뷰] 지표 조회 캐시 계층",
+    "department": "데이터팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리"
+    ],
+    "participants": [
+      "배현우",
+      "최유진"
+    ],
+    "concepts": [
+      "캐시",
+      "지표",
+      "성능"
+    ],
+    "dates": [
+      "2026-06-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 889
+  },
+  {
+    "documentId": "DOC-253",
+    "title": "인프라 비용 절감 방안 논의",
+    "department": "DevOps팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "오세훈",
+      "임채원"
+    ],
+    "concepts": [
+      "비용",
+      "인프라",
+      "우선순위"
+    ],
+    "dates": [
+      "2026-06-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1002
+  },
+  {
+    "documentId": "DOC-254",
+    "title": "관리자 대시보드 항목 우선순위",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "운영 관리"
+    ],
+    "participants": [
+      "강민재",
+      "임채원"
+    ],
+    "concepts": [
+      "대시보드",
+      "우선순위",
+      "운영 효율"
+    ],
+    "dates": [
+      "2026-06-29"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1018
+  },
+  {
+    "documentId": "DOC-255",
+    "title": "데이터 플랫폼 개선 현황",
+    "department": "데이터팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "MARS",
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "파이프라인",
+      "지표",
+      "일정"
+    ],
+    "dates": [
+      "2026-07-03"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 720
+  },
+  {
+    "documentId": "DOC-256",
+    "title": "토큰 서명 키 회전 저장소 도입 논의",
+    "department": "플랫폼개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [
+      "조아름",
+      "김도윤"
+    ],
+    "concepts": [
+      "키 관리",
+      "JWT",
+      "보안"
+    ],
+    "dates": [
+      "2026-02-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1096
+  },
+  {
+    "documentId": "DOC-257",
+    "title": "토큰 재발급 API v2 명세",
+    "department": "플랫폼개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [],
+    "concepts": [
+      "Refresh Token",
+      "회전",
+      "버전 변경"
+    ],
+    "dates": [
+      "2026-02-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1257
+  },
+  {
+    "documentId": "DOC-258",
+    "title": "[리뷰] 서명 키 회전 적용",
+    "department": "플랫폼개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [
+      "김도윤",
+      "조아름"
+    ],
+    "concepts": [
+      "키 관리",
+      "캐시",
+      "보안"
+    ],
+    "dates": [
+      "2026-03-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1119
+  },
+  {
+    "documentId": "DOC-259",
+    "title": "signing_key 테이블 설계",
+    "department": "플랫폼개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [],
+    "concepts": [
+      "키 관리",
+      "암호화",
+      "이력"
+    ],
+    "dates": [
+      "2026-03-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1486
+  },
+  {
+    "documentId": "DOC-260",
+    "title": "키 회전 직후 일부 요청에서 인증 실패",
+    "department": "플랫폼개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증"
+    ],
+    "participants": [],
+    "concepts": [
+      "키 관리",
+      "캐시",
+      "배포"
+    ],
+    "dates": [
+      "2026-03-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1168
+  },
+  {
+    "documentId": "DOC-261",
+    "title": "신규 입사자 개발 환경 준비",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "온보딩",
+      "개발 환경"
+    ],
+    "dates": [
+      "2026-01-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1004
+  },
+  {
+    "documentId": "DOC-262",
+    "title": "서비스 아키텍처 개요",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "아키텍처",
+      "서비스 경계"
+    ],
+    "dates": [
+      "2025-02-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1412
+  },
+  {
+    "documentId": "DOC-263",
+    "title": "서비스 경계 재정의 논의",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS"
+    ],
+    "features": [],
+    "participants": [
+      "김도윤",
+      "노태윤",
+      "박준호"
+    ],
+    "concepts": [
+      "서비스 경계",
+      "기술 부채",
+      "확장성"
+    ],
+    "dates": [
+      "2026-07-07"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1022
+  },
+  {
+    "documentId": "DOC-264",
+    "title": "비회원 주문 도입 검토",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "NEXUS"
+    ],
+    "features": [
+      "주문",
+      "회원가입"
+    ],
+    "participants": [
+      "강민재",
+      "이서연"
+    ],
+    "concepts": [
+      "비회원",
+      "개인정보",
+      "요구사항"
+    ],
+    "dates": [
+      "2026-05-28"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1151
+  },
+  {
+    "documentId": "DOC-265",
+    "title": "비회원 주문 조회 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "NEXUS"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "비회원",
+      "인증",
+      "Rate Limit"
+    ],
+    "dates": [
+      "2026-06-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1315
+  },
+  {
+    "documentId": "DOC-266",
+    "title": "비회원 주문 데이터 처리 방안",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT"
+    ],
+    "features": [
+      "주문",
+      "회원가입"
+    ],
+    "participants": [],
+    "concepts": [
+      "비회원",
+      "개인정보",
+      "보관 기간"
+    ],
+    "dates": [
+      "2026-06-12"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1454
+  },
+  {
+    "documentId": "DOC-267",
+    "title": "[리뷰] 비회원 주문 조회 인증",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [
+      "이서연",
+      "조아름"
+    ],
+    "concepts": [
+      "비회원",
+      "보안",
+      "Rate Limit"
+    ],
+    "dates": [
+      "2026-06-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1173
+  },
+  {
+    "documentId": "DOC-268",
+    "title": "고객 프로필 이미지 도입 검토",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [
+      "프로필"
+    ],
+    "participants": [
+      "송지은",
+      "최유진"
+    ],
+    "concepts": [
+      "프로필",
+      "이미지",
+      "정책"
+    ],
+    "dates": [
+      "2025-08-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 870
+  },
+  {
+    "documentId": "DOC-269",
+    "title": "이미지 저장소 선정 검토",
+    "department": "DevOps팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "상품"
+    ],
+    "participants": [
+      "오세훈",
+      "최유진"
+    ],
+    "concepts": [
+      "저장소",
+      "CDN",
+      "비용"
+    ],
+    "dates": [
+      "2025-09-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1100
+  },
+  {
+    "documentId": "DOC-270",
+    "title": "인증 시스템 2차 개선 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Echo",
+    "entities": [
+      "BlueGate"
+    ],
+    "features": [
+      "인증",
+      "로그인"
+    ],
+    "participants": [],
+    "concepts": [
+      "일정",
+      "키 관리",
+      "Risk"
+    ],
+    "dates": [
+      "2026-04-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 826
+  },
+  {
+    "documentId": "DOC-271",
+    "title": "판매자 시스템 연동 표준화 논의",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문",
+      "주문 취소"
+    ],
+    "participants": [
+      "노태윤",
+      "임채원"
+    ],
+    "concepts": [
+      "외부 연동",
+      "표준화",
+      "기술적 제약"
+    ],
+    "dates": [
+      "2026-01-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1071
+  },
+  {
+    "documentId": "DOC-272",
+    "title": "판매자 주문 전송 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "외부 연동",
+      "표준화",
+      "Webhook"
+    ],
+    "dates": [
+      "2026-02-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1596
+  },
+  {
+    "documentId": "DOC-273",
+    "title": "seller / seller_integration 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "외부 연동",
+      "설정",
+      "확장성"
+    ],
+    "dates": [
+      "2026-02-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1586
+  },
+  {
+    "documentId": "DOC-274",
+    "title": "[리뷰] 판매자 연동 어댑터 구조",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [
+      "노태윤",
+      "김도윤"
+    ],
+    "concepts": [
+      "외부 연동",
+      "인터페이스",
+      "재시도"
+    ],
+    "dates": [
+      "2026-03-09"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1108
+  },
+  {
+    "documentId": "DOC-275",
+    "title": "판매자 정산 주기 조정 논의",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "환불"
+    ],
+    "participants": [
+      "강민재",
+      "배현우"
+    ],
+    "concepts": [
+      "정산",
+      "정책",
+      "집계"
+    ],
+    "dates": [
+      "2026-03-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 976
+  },
+  {
+    "documentId": "DOC-276",
+    "title": "정산 내역 조회 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "정산",
+      "권한",
+      "집계"
+    ],
+    "dates": [
+      "2026-04-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1498
+  },
+  {
+    "documentId": "DOC-277",
+    "title": "판매자 연동 확대 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [
+      "주문",
+      "주문 취소"
+    ],
+    "participants": [],
+    "concepts": [
+      "외부 연동",
+      "일정",
+      "Risk"
+    ],
+    "dates": [
+      "2026-05-04"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 922
+  },
+  {
+    "documentId": "DOC-278",
+    "title": "판매자 문의 대응 가이드",
+    "department": "고객지원팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "ORBIT",
+      "AIMS"
+    ],
+    "features": [
+      "주문"
+    ],
+    "participants": [],
+    "concepts": [
+      "운영",
+      "판매자",
+      "정산"
+    ],
+    "dates": [
+      "2026-05-18"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 949
+  },
+  {
+    "documentId": "DOC-279",
+    "title": "앱 초기 실행 속도 개선 방향",
+    "department": "모바일개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "한지민",
+      "서지호"
+    ],
+    "concepts": [
+      "성능",
+      "앱",
+      "측정"
+    ],
+    "dates": [
+      "2026-04-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 968
+  },
+  {
+    "documentId": "DOC-280",
+    "title": "[리뷰] 앱 이미지 캐시 정책",
+    "department": "모바일개발팀",
+    "documentType": "코드리뷰",
+    "project": null,
+    "entities": [],
+    "features": [
+      "상품"
+    ],
+    "participants": [
+      "한지민",
+      "최유진"
+    ],
+    "concepts": [
+      "캐시",
+      "성능",
+      "앱"
+    ],
+    "dates": [
+      "2026-04-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 925
+  },
+  {
+    "documentId": "DOC-281",
+    "title": "앱 초기 설정 조회 API 명세",
+    "department": "모바일개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "앱",
+      "설정",
+      "성능"
+    ],
+    "dates": [
+      "2026-05-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1262
+  },
+  {
+    "documentId": "DOC-282",
+    "title": "앱 크래시 분석 방법",
+    "department": "모바일개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "앱",
+      "크래시",
+      "디버깅"
+    ],
+    "dates": [
+      "2026-06-05"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1081
+  },
+  {
+    "documentId": "DOC-283",
+    "title": "접근성 개선 범위 논의",
+    "department": "프론트엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "최유진",
+      "서지호"
+    ],
+    "concepts": [
+      "접근성",
+      "우선순위",
+      "테스트"
+    ],
+    "dates": [
+      "2026-06-19"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1017
+  },
+  {
+    "documentId": "DOC-284",
+    "title": "다크 모드 도입 검토",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [
+      "송지은",
+      "정하늘"
+    ],
+    "concepts": [
+      "UX",
+      "우선순위",
+      "작업량"
+    ],
+    "dates": [
+      "2026-07-02"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 985
+  },
+  {
+    "documentId": "DOC-285",
+    "title": "클라이언트 품질 개선 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "성능",
+      "품질",
+      "일정"
+    ],
+    "dates": [
+      "2026-07-08"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 877
+  },
+  {
+    "documentId": "DOC-286",
+    "title": "2026 하반기 로드맵 논의",
+    "department": "프로젝트관리팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [
+      "강민재",
+      "임채원"
+    ],
+    "concepts": [
+      "우선순위",
+      "일정",
+      "기술 부채"
+    ],
+    "dates": [
+      "2026-07-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 997
+  },
+  {
+    "documentId": "DOC-287",
+    "title": "임시 권한 위임 설계 검토",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [
+      "노태윤",
+      "조아름"
+    ],
+    "concepts": [
+      "권한",
+      "만료",
+      "감사 로그"
+    ],
+    "dates": [
+      "2026-07-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 915
+  },
+  {
+    "documentId": "DOC-288",
+    "title": "임시 권한 위임 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "권한",
+      "만료",
+      "Edge Case",
+      "감사 로그"
+    ],
+    "dates": [
+      "2026-07-16"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1528
+  },
+  {
+    "documentId": "DOC-289",
+    "title": "permission_delegation 테이블 설계",
+    "department": "백엔드개발팀",
+    "documentType": "DB 테이블 설계안",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한"
+    ],
+    "participants": [],
+    "concepts": [
+      "권한",
+      "만료",
+      "Index"
+    ],
+    "dates": [
+      "2026-07-20"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1662
+  },
+  {
+    "documentId": "DOC-290",
+    "title": "[리뷰] 권한 위임 만료 판정",
+    "department": "백엔드개발팀",
+    "documentType": "코드리뷰",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한"
+    ],
+    "participants": [
+      "노태윤",
+      "김도윤"
+    ],
+    "concepts": [
+      "권한",
+      "캐시",
+      "만료"
+    ],
+    "dates": [
+      "2026-07-23"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1210
+  },
+  {
+    "documentId": "DOC-291",
+    "title": "권한 위임 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "권한",
+      "만료",
+      "감사 로그"
+    ],
+    "dates": [
+      "2026-07-27"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1613
+  },
+  {
+    "documentId": "DOC-292",
+    "title": "위임 만료 후에도 권한이 유지되는 사례",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한"
+    ],
+    "participants": [],
+    "concepts": [
+      "권한",
+      "캐시",
+      "만료"
+    ],
+    "dates": [
+      "2026-07-30"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1146
+  },
+  {
+    "documentId": "DOC-293",
+    "title": "Atlas 2차 진행 현황",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": "Project Atlas",
+    "entities": [
+      "AIMS"
+    ],
+    "features": [
+      "권한",
+      "운영 관리"
+    ],
+    "participants": [],
+    "concepts": [
+      "일정",
+      "권한",
+      "Risk"
+    ],
+    "dates": [
+      "2026-08-03"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 725
+  },
+  {
+    "documentId": "DOC-294",
+    "title": "상품 문의 답변 목표 시간 조정",
+    "department": "서비스기획팀",
+    "documentType": "기획자와의 회의록",
+    "project": null,
+    "entities": [
+      "ORBIT"
+    ],
+    "features": [],
+    "participants": [
+      "강민재",
+      "문가영"
+    ],
+    "concepts": [
+      "SLA",
+      "운영 효율",
+      "정책"
+    ],
+    "dates": [
+      "2026-08-06"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1076
+  },
+  {
+    "documentId": "DOC-295",
+    "title": "신규 API 개발 체크리스트",
+    "department": "백엔드개발팀",
+    "documentType": "매뉴얼 / 정의서",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "API",
+      "체크리스트",
+      "설계"
+    ],
+    "dates": [
+      "2026-08-10"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1166
+  },
+  {
+    "documentId": "DOC-296",
+    "title": "알림 야간 발송 차단 설계",
+    "department": "백엔드개발팀",
+    "documentType": "비즈니스 기능 설계",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "알림",
+      "정책",
+      "Edge Case"
+    ],
+    "dates": [
+      "2026-08-13"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1291
+  },
+  {
+    "documentId": "DOC-297",
+    "title": "알림 설정 조회 및 변경 API 명세",
+    "department": "백엔드개발팀",
+    "documentType": "API 명세서",
+    "project": null,
+    "entities": [
+      "NEXUS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "알림",
+      "수신 동의",
+      "설정"
+    ],
+    "dates": [
+      "2026-08-17"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1585
+  },
+  {
+    "documentId": "DOC-298",
+    "title": "야간 차단 적용 후 결제 실패 알림 미도달",
+    "department": "백엔드개발팀",
+    "documentType": "이슈 정리",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT"
+    ],
+    "features": [
+      "결제"
+    ],
+    "participants": [],
+    "concepts": [
+      "알림",
+      "분류",
+      "정책"
+    ],
+    "dates": [
+      "2026-08-21"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1182
+  },
+  {
+    "documentId": "DOC-299",
+    "title": "2026 하반기 기술 부채 점검",
+    "department": "백엔드개발팀",
+    "documentType": "개발자 회의록",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [
+      "김도윤",
+      "노태윤",
+      "박준호"
+    ],
+    "concepts": [
+      "기술 부채",
+      "우선순위",
+      "반복 문제"
+    ],
+    "dates": [
+      "2026-08-25"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1241
+  },
+  {
+    "documentId": "DOC-300",
+    "title": "2026 상반기 전체 회고",
+    "department": "프로젝트관리팀",
+    "documentType": "프로젝트 진행상황",
+    "project": null,
+    "entities": [
+      "NEXUS",
+      "ORBIT",
+      "MARS",
+      "BlueGate",
+      "AIMS"
+    ],
+    "features": [],
+    "participants": [],
+    "concepts": [
+      "회고",
+      "일정",
+      "품질"
+    ],
+    "dates": [
+      "2026-07-15"
+    ],
+    "isDeprecated": false,
+    "bodyLength": 1323
+  }
+]

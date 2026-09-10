@@ -1,0 +1,58 @@
+[
+  {
+    "termA": "포인트",
+    "termB": "적립금",
+    "relation": "EXACT_ALIAS",
+    "axis": "시기",
+    "note": "2026년 리워드 통합 이전 문서는 '적립금'으로 부른다."
+  },
+  {
+    "termA": "회원",
+    "termB": "고객",
+    "relation": "SYNONYM",
+    "axis": "부서",
+    "note": "서비스기획팀·고객지원팀 문서는 '고객'으로 쓴다."
+  },
+  {
+    "termA": "멱등키",
+    "termB": "중복 방지 키",
+    "relation": "EXACT_ALIAS",
+    "axis": "문서 종류",
+    "note": "회의록·운영 문서에서 풀어 쓴 표현."
+  },
+  {
+    "termA": "대사",
+    "termB": "정합성 대조",
+    "relation": "EXACT_ALIAS",
+    "axis": "문서 종류",
+    "note": "진행상황·설계 문서에서 풀어 쓴 표현."
+  },
+  {
+    "termA": "장바구니",
+    "termB": "카트",
+    "relation": "EXACT_ALIAS",
+    "axis": "문서 종류",
+    "note": "기획·운영 문서는 화면 용어인 '카트'를 쓴다."
+  },
+  {
+    "termA": "배송지",
+    "termB": "수령지",
+    "relation": "EXACT_ALIAS",
+    "axis": "문서 종류",
+    "note": "기획·운영 문서는 '수령지'를 쓴다."
+  },
+  {
+    "termA": "감사 로그",
+    "termB": "감사 이력",
+    "relation": "EXACT_ALIAS",
+    "axis": "문서 종류",
+    "note": "회의록·진행상황 문서는 '감사 이력'으로 쓴다."
+  },
+  {
+    "termA": "탈퇴",
+    "termB": "해지",
+    "relation": "NEAR_SYNONYM",
+    "axis": "문서 종류",
+    "note": "기획·매뉴얼 문서는 '해지'로 쓴다. 정기결제 해지와 겹칠 여지가 있다."
+  }
+]

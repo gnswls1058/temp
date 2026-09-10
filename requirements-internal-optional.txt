@@ -1,0 +1,12 @@
+# 내부망 선택 구성. 없어도 파이프라인은 끝까지 돈다.
+#
+#   pytest        : 반입 후 자체 테스트 실행. 권장한다.
+#   python-dotenv : .env 파일로 비밀값 관리. 환경변수로 대체 가능.
+#   gensim        : fasttext.enabled / context_profile.enabled 를 true 로 켤 수 있다.
+#                   다만 gold set 250쌍 실측에서 분포 경로 단독의 유의미 비율은
+#                   1.9% 였고, 꺼도 정답 회수는 그대로였다. 우선순위가 낮다.
+#                   gensim 4.3.3 은 numpy<2 를 요구하므로 필수 세트의 numpy 2.x 와
+#                   충돌한다. 쓰려면 wheels-optional 을 함께 지정해 설치한다.
+
+pytest==8.3.3
+python-dotenv==1.0.1

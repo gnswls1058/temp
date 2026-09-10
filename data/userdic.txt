@@ -1,0 +1,156 @@
+강민재	NNP
+김도윤	NNP
+노태윤	NNP
+문가영	NNP
+박준호	NNP
+배현우	NNP
+서지호	NNP
+송지은	NNP
+오세훈	NNP
+윤수빈	NNP
+이서연	NNP
+임채원	NNP
+정하늘	NNP
+조아름	NNP
+최유진	NNP
+한지민	NNP
+NEXUS	NNP
+ORBIT	NNP
+MARS	NNP
+AIMS	NNP
+BlueGate	NNP
+Project Aurora	NNP
+Project Falcon	NNP
+Project Nova	NNP
+Project Atlas	NNP
+Project Echo	NNP
+Aurora	NNP
+Falcon	NNP
+Nova	NNP
+Atlas	NNP
+Echo	NNP
+배송	NNG
+배송지	NNG
+배송비	NNG
+배송 완료	NNG
+배송 상태	NNG
+배송 지연	NNG
+송장	NNG
+송장번호	NNG
+릴리스	NNG
+리뷰어	NNG
+리뷰	NNG
+멱등키	NNG
+멱등성	NNG
+빌링키	NNG
+파라미터	NNG
+컴포넌트	NNG
+공통 컴포넌트	NNG
+타임아웃	NNG
+콜백	NNG
+캐시	NNG
+커넥션	NNG
+커넥션 풀	NNG
+인덱스	NNG
+전문 인덱스	NNG
+스냅샷	NNG
+파이프라인	NNG
+어댑터	NNG
+인터셉터	NNG
+스케줄러	NNG
+배치	NNG
+대사 배치	NNG
+보정 배치	NNG
+소멸 배치	NNG
+포인트	NNG
+적립금	NNG
+리워드	NNG
+쿠폰	NNG
+선착순	NNG
+적립률	NNG
+등급 산정	NNG
+구매액	NNG
+결제	NNG
+결제 취소	NNG
+부분 취소	NNG
+전액 취소	NNG
+환불	NNG
+강제 환불	NNG
+정기 결제	NNG
+간편결제	NNG
+승인	NNG
+승인 취소	NNG
+재고	NNG
+재고 차감	NNG
+재고 예약	NNG
+주문	NNG
+주문번호	NNG
+장바구니	NNG
+품절	NNG
+회원가입	NNG
+탈퇴	NNG
+휴면	NNG
+소셜 로그인	NNG
+인증번호	NNG
+인증 메일	NNG
+비밀번호	NNG
+토큰	NNG
+서명 키	NNG
+키 회전	NNG
+권한	NNG
+위임	NNG
+권한 위임	NNG
+역할	NNG
+감사 로그	NNG
+마스킹	NNG
+개인정보	NNG
+정합성	NNG
+동시성	NNG
+교착 상태	NNG
+데드락	NNG
+낙관적 락	NNG
+분산 락	NNG
+온콜	NNG
+장애 대응	NNG
+에스컬레이션	NNG
+핫픽스	NNG
+롤백	NNG
+점검	NNG
+마이그레이션	NNG
+판매자	NNG
+정산	NNG
+수수료	NNG
+문의	NNG
+답변	NNG
+알림	NNG
+푸시	NNG
+수신 동의	NNG
+야간 차단	NNG
+대시보드	NNG
+지표	NNG
+집계	NNG
+증분 적재	NNG
+크래시	NNG
+접근성	NNG
+다크 모드	NNG
+전환율	NNG
+스프린트	NNG
+킥오프	NNG
+회고	NNG
+체크리스트	NNG
+요구사항	NNG
+우선순위	NNG
+기술 부채	NNG
+검색어	NNG
+오타 보정	NNG
+동의어	NNG
+형태소	NNG
+수령지	NNP
+카트	NNP
+대조	NNP
+감사	NNP
+이력	NNP
+수령자	NNP
+정합성 대조	NNP
+감사 이력	NNP
+중복 방지 키	NNP

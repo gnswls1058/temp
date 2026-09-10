@@ -1,0 +1,4 @@
+SGAS	NNP
+FortiClient	NNP
+패밀리 오픈	NNP
+VDA5050	NNP
