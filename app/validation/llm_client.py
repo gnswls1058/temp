@@ -51,7 +51,12 @@ class AnthropicLLMClient(LLMClient):
         try:
             from anthropic import Anthropic
         except ImportError as exc:  # pragma: no cover
-            raise LLMError("anthropic SDK 가 설치되지 않았습니다. `pip install anthropic`") from exc
+            raise LLMError(
+                "anthropic SDK 가 설치되지 않았습니다.\n"
+                "내부망에서 사내 LLM 서버를 쓰신다면 llm_validation.provider 를 "
+                "http 로 바꾸세요 (config.internal.yaml 참고).\n"
+                "Anthropic 공식 API 를 쓰려면 `pip install anthropic`."
+            ) from exc
 
         self._client = Anthropic(api_key=api_key, timeout=timeout)
         self.model = model
@@ -127,7 +132,11 @@ def create_llm_client(settings_section) -> LLMClient:
 
     provider = str(settings_section.get("provider", "anthropic")).lower()
 
-    if provider in ("http", "internal", "openai_compatible"):
+    _HTTP_PROVIDERS = (
+        "http", "internal", "openai_compatible", "openai",
+        "anthropic_compatible", "vllm", "rest", "custom", "local",
+    )
+    if provider in _HTTP_PROVIDERS:
         # 사내 LLM 서버. 외부 인터넷이 없는 내부망에서 쓰는 경로다.
         from app.validation.http_llm_client import HttpLLMClient
 
@@ -138,8 +147,9 @@ def create_llm_client(settings_section) -> LLMClient:
             auth_header=str(settings_section.get("auth_header", "Authorization")),
             auth_prefix=str(settings_section.get("auth_prefix", "Bearer ")),
             request_format=str(settings_section.get("request_format", "openai")),
-            response_path=str(
-                settings_section.get("response_path", "choices.0.message.content")
+            response_path=str(settings_section.get("response_path", "") or ""),
+            merge_system_into_user=bool(
+                settings_section.get("merge_system_into_user", False)
             ),
             system_key=str(settings_section.get("system_key", "system")),
             prompt_key=str(settings_section.get("prompt_key", "prompt")),
@@ -156,7 +166,11 @@ def create_llm_client(settings_section) -> LLMClient:
         )
 
     if provider != "anthropic":
-        raise LLMError(f"지원하지 않는 LLM provider: {provider}")
+        raise LLMError(
+            f"지원하지 않는 LLM provider: {provider}\n"
+            f"사내 LLM 서버라면 다음 중 하나를 쓰세요: {', '.join(_HTTP_PROVIDERS)}\n"
+            "Anthropic 공식 API 를 쓰려면 provider: anthropic 입니다."
+        )
 
     return AnthropicLLMClient(
         api_key=str(settings_section.get("api_key", "")),

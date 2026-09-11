@@ -136,6 +136,7 @@ class TermDictionaryPipeline:
             backoff_base=float(conf.get("backoff_base_seconds", 1.0)),
             backoff_max=float(conf.get("backoff_max_seconds", 60.0)),
             api_version=str(conf.get("api_version", "v2")),
+            auth_type=str(conf.get("auth_type", "auto")),
             verify_ssl=self._verify_ssl(conf.get("verify_ssl", True)),
             extra_headers=dict(conf.get("extra_headers", {}) or {}),
         )

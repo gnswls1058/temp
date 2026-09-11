@@ -108,9 +108,58 @@ confluence:
 | 키 | 기본값 | 왜 이 값인가 |
 |---|---|---|
 | `confluence.api_version` | `v1` | 구버전(Server/DC)은 `/rest/api/content` 를 쓴다 |
+| `confluence.auth_type` | `bearer` | PAT 를 `Authorization: Bearer` 로 보낸다 |
 | `cleaning.output_format` | `markdown` | HTML 본문의 제목·표 구조를 남긴다 |
 | `fasttext.enabled` | `false` | gensim 없이 돌린다 |
 | `llm_validation.provider` | `http` | 사내 LLM 서버 |
+
+### Confluence 인증 방식
+
+사내 Confluence(Server/DC)는 보통 **개인 액세스 토큰(PAT)** 을 씁니다.
+Postman 에서 `Authorization: Bearer <토큰>` 으로 보내는 그 방식입니다.
+
+```yaml
+confluence:
+  auth_type: "bearer"     # PAT -> Authorization: Bearer <토큰>
+```
+
+`auth_type` 을 지정하지 않으면 `email` 값이 있는지로 방식을 추측하는데,
+PAT 를 쓰면서 `CONFLUENCE_EMAIL` 을 채워 두면 Basic 인증으로 바뀌어 401 이 납니다.
+**`bearer` 로 명시하는 편이 안전합니다.**
+
+Cloud API 토큰이나 ID/PW 를 쓴다면 `basic` 으로 두고 `email` 을 채웁니다.
+
+```yaml
+confluence:
+  auth_type: "basic"
+  email: "${CONFLUENCE_EMAIL}"
+```
+
+### 사내 LLM 규격 맞추기
+
+엔드포인트 경로를 보면 대체로 알 수 있습니다.
+
+| 서버 경로 | `request_format` | 비고 |
+|---|---|---|
+| `/v1/chat/completions` | `openai` | 가장 흔함 |
+| `/v1/messages` | **`anthropic`** | vLLM 의 Anthropic 호환 포함 |
+| 사내 자체 규격 | `plain` | 키 이름을 직접 지정 |
+
+`/v1/messages` 에 `openai` 형식으로 보내면 이런 400 이 납니다.
+
+```
+Input should be 'user' or 'assistant' ... 'input': 'system'
+```
+
+Anthropic 규격은 `system` 을 messages 배열이 아니라 **최상위 필드**로 받기 때문입니다.
+`request_format: "anthropic"` 으로 바꾸면 해결됩니다.
+
+system 역할 자체를 받지 않는 서버라면:
+
+```yaml
+llm_validation:
+  merge_system_into_user: true
+```
 
 ### 사내 LLM 이 OpenAI 호환이 아니면
 
@@ -382,6 +431,7 @@ python -m app.main -c config.internal.yaml rebuild
 | JVM 로드 실패 | 32bit JDK + 64bit Python | 64bit JDK 로 교체 |
 | `SSLError` | 사내 사설 CA | `confluence.verify_ssl` 에 CA 번들 경로 지정 |
 | Confluence 404 | v2 경로로 요청 | `api_version: v1` 확인 |
+| Confluence 401 | 인증 방식이 다름 | `auth_type: bearer` 확인. 오류 메시지가 어느 방식으로 보냈는지 알려준다 |
 | 페이지 0건 | space key 오타 / 권한 없음 | `--connect` 점검, space key 대문자 확인 |
 | LLM 응답 파싱 실패 | 응답 경로가 다름 | 실제 응답 JSON 을 보고 `response_path` 수정 |
 | 용어가 다 쪼개짐 | 사용자 사전 부족 | 5장 참고 |

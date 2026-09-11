@@ -13,9 +13,14 @@ confluence:
   #   v2 -> /api/v2/pages        (cursor 페이징, Cloud 전용)
   api_version: "v1"
 
-  # 인증: 사내는 대부분 개인 액세스 토큰(PAT)이다.
-  #   - PAT 만 있으면 email 을 비우면 Bearer 인증으로 동작한다.
-  #   - ID/PW 나 Cloud API 토큰이면 email 과 api_token 을 함께 채운다.
+  # 인증 방식을 명시한다. 추측에 맡기면 email 을 채워 둔 것만으로 Basic 으로
+  # 바뀌어 401 이 난다.
+  #   bearer : Authorization: Bearer <토큰>   <- 사내 Server/DC 개인 액세스 토큰(PAT)
+  #   basic  : email + token 으로 Basic 인증   <- Cloud API 토큰, ID/PW
+  #   auto   : email 이 있으면 basic, 없으면 bearer
+  auth_type: "bearer"
+
+  # auth_type=bearer 면 email 은 쓰이지 않는다. basic 일 때만 채운다.
   email: "${CONFLUENCE_EMAIL:-}"
   api_token: "${CONFLUENCE_API_TOKEN}"
 
@@ -136,12 +141,28 @@ llm_validation:
   auth_header: "Authorization"
   auth_prefix: "Bearer "
 
-  # openai : {"model","messages":[...]}  -> choices.0.message.content
-  # plain  : {"model", <system_key>, <prompt_key>} -> response_path 로 지정
+  # 서버 규격에 맞춰 고른다. 엔드포인트 경로를 보면 대체로 알 수 있다.
+  #
+  #   openai    : /v1/chat/completions
+  #               {"model","messages":[{"role":"system"},{"role":"user"}]}
+  #               -> choices.0.message.content
+  #
+  #   anthropic : /v1/messages   (vLLM 의 Anthropic 호환 엔드포인트 포함)
+  #               {"model","max_tokens","system","messages":[{"role":"user"}]}
+  #               system 을 messages 가 아니라 최상위 필드로 받는다.
+  #               -> content.0.text
+  #
+  #   plain     : 사내 자체 규격. system_key / prompt_key / response_path 로 맞춘다.
+  #
+  # response_path 를 비워 두면 규격별 기본값을 쓴다.
   request_format: "openai"
-  response_path: "choices.0.message.content"
+  response_path: ""
   system_key: "system"
   prompt_key: "prompt"
+
+  # system 역할 자체를 받지 않는 서버(Gemma 계열 등)면 true 로 둔다.
+  # system 지시문을 사용자 메시지 앞에 붙여 하나로 보낸다.
+  merge_system_into_user: false
 
   verify_ssl: true
   extra_headers: {}

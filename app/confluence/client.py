@@ -50,6 +50,7 @@ class ConfluenceClient:
         backoff_max: float = 60.0,
         session: Optional[requests.Session] = None,
         api_version: str = "v2",
+        auth_type: str = "auto",
         verify_ssl: bool = True,
         extra_headers: Optional[Dict[str, str]] = None,
     ):
@@ -71,11 +72,30 @@ class ConfluenceClient:
         self.session = session or requests.Session()
         # 사내 인증서(사설 CA)를 쓰는 환경에서는 검증을 끄거나 CA 번들 경로를 준다.
         self.session.verify = verify_ssl
-        if email and api_token:
+        # 인증 방식을 email 유무로 추측하면 사고가 난다.
+        # email 을 채워 둔 채 PAT 를 쓰면 조용히 Basic 으로 바뀌어 401 이 난다.
+        #   bearer : Authorization: Bearer <token>   (Server/DC 개인 액세스 토큰)
+        #   basic  : email + token 으로 Basic        (Cloud API 토큰, ID/PW)
+        #   auto   : email 이 있으면 basic, 없으면 bearer (과거 동작)
+        mode = str(auth_type).lower().strip()
+        if mode not in ("auto", "bearer", "basic"):
+            raise ValueError(
+                f"confluence.auth_type 은 auto / bearer / basic 중 하나여야 합니다: {auth_type}"
+            )
+        if mode == "auto":
+            mode = "basic" if (email and api_token) else "bearer"
+
+        self.auth_type = mode
+        if mode == "basic":
+            if not email:
+                raise ValueError(
+                    "confluence.auth_type=basic 인데 email 이 비어 있습니다. "
+                    "PAT 를 쓴다면 auth_type 을 bearer 로 두세요."
+                )
             self.session.auth = HTTPBasicAuth(email, api_token)
         elif api_token:
-            # PAT (Server/DC) 방식 지원
             self.session.headers["Authorization"] = f"Bearer {api_token}"
+        logger.info("Confluence 인증 방식: %s (API %s)", mode, self.api_version)
         self.session.headers.update({"Accept": "application/json"})
         if extra_headers:
             self.session.headers.update(extra_headers)
@@ -118,8 +138,16 @@ class ConfluenceClient:
                 logger.error(
                     "Confluence 인증/권한 오류 %s: %s (%s)", status, url, response.text[:300]
                 )
+                hint = (
+                    "auth_type=bearer 로 Authorization: Bearer <토큰> 을 보냈습니다. "
+                    "토큰이 유효한지, 만료되지 않았는지 확인하세요."
+                    if self.auth_type == "bearer" else
+                    "auth_type=basic 으로 email+token Basic 인증을 보냈습니다. "
+                    "개인 액세스 토큰(PAT)을 쓴다면 confluence.auth_type 을 "
+                    "bearer 로 바꿔야 합니다."
+                )
                 raise ConfluenceAuthError(
-                    f"인증 또는 권한 오류 ({status}). API token / 계정 권한을 확인하세요.", status
+                    f"인증 또는 권한 오류 ({status}). {hint}", status
                 )
 
             if status == 404:

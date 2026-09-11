@@ -12,8 +12,15 @@ HTTP 로 질의하고 구조화된 JSON 을 돌려받는 경로를 따로 둔다
 요청 형식은 두 가지를 지원한다.
 - ``openai``  : ``{"model", "messages":[{"role","content"}], "temperature", "max_tokens"}``
                 응답은 ``choices[0].message.content``
+- ``anthropic``: ``{"model", "max_tokens", "system", "messages":[{"role":"user"}]}``
+                Anthropic Messages API 규격. system 을 messages 가 아니라 최상위
+                필드로 받는다. vLLM 의 /v1/messages 엔드포인트가 이 형식이다.
+                응답은 ``content[0].text``
 - ``plain``   : ``{"model", "system", "prompt", ...}`` 처럼 단순한 사내 규격.
                 요청 키와 응답 경로를 설정으로 지정한다.
+
+system 역할 자체를 받지 않는 서버(Gemma 계열 등)를 위해 ``merge_system_into_user``
+옵션을 둔다. 켜면 system 지시문을 사용자 메시지 앞에 붙여 하나로 보낸다.
 """
 from __future__ import annotations
 
@@ -107,7 +114,8 @@ class HttpLLMClient(LLMClient):
         auth_header: str = "Authorization",
         auth_prefix: str = "Bearer ",
         request_format: str = "openai",
-        response_path: str = "choices.0.message.content",
+        response_path: str = "",
+        merge_system_into_user: bool = False,
         system_key: str = "system",
         prompt_key: str = "prompt",
         max_tokens: int = 4096,
@@ -130,11 +138,18 @@ class HttpLLMClient(LLMClient):
         self.base_url = base_url
         self.model = model
         self.request_format = str(request_format).lower()
-        if self.request_format not in ("openai", "plain"):
+        if self.request_format not in ("openai", "anthropic", "plain"):
             raise LLMError(
-                f"llm_validation.request_format 은 openai 또는 plain 이어야 합니다: {request_format}"
+                "llm_validation.request_format 은 openai / anthropic / plain 중 "
+                f"하나여야 합니다: {request_format}"
             )
-        self.response_path = response_path
+        # 규격마다 응답에서 본문을 꺼내는 위치가 다르다. 지정하지 않으면 기본값을 쓴다.
+        self.response_path = response_path or {
+            "openai": "choices.0.message.content",
+            "anthropic": "content.0.text",
+            "plain": "choices.0.message.content",
+        }[self.request_format]
+        self.merge_system_into_user = merge_system_into_user
         self.system_key = system_key
         self.prompt_key = prompt_key
         self.max_tokens = max_tokens
@@ -164,13 +179,33 @@ class HttpLLMClient(LLMClient):
         return extract_json(text)
 
     def _build_body(self, system: str, user_prompt: str) -> Dict[str, Any]:
-        if self.request_format == "openai":
+        if self.merge_system_into_user:
+            # system 역할을 아예 받지 않는 서버용. 지시문을 사용자 메시지에 붙인다.
+            user_prompt = f"{system}\n\n---\n\n{user_prompt}"
+            system = ""
+
+        if self.request_format == "anthropic":
+            # Anthropic Messages API: system 은 최상위 필드다.
+            # messages 의 role 은 user / assistant 만 허용된다.
             body: Dict[str, Any] = {
                 "model": self.model,
-                "messages": [
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": user_prompt},
-                ],
+                "max_tokens": self.max_tokens,
+                "temperature": self.temperature,
+                "messages": [{"role": "user", "content": user_prompt}],
+            }
+            if system:
+                body["system"] = system
+            body.update(self.extra_body)
+            return body
+
+        if self.request_format == "openai":
+            messages = []
+            if system:
+                messages.append({"role": "system", "content": system})
+            messages.append({"role": "user", "content": user_prompt})
+            body = {
+                "model": self.model,
+                "messages": messages,
                 "temperature": self.temperature,
                 "max_tokens": self.max_tokens,
             }

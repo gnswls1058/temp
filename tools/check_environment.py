@@ -275,13 +275,15 @@ def check_connections(report: Report, settings) -> None:
             email=str(settings.get("confluence.email", "") or ""),
             api_token=str(settings.get("confluence.api_token", "") or ""),
             api_version=str(settings.get("confluence.api_version", "v2")),
+            auth_type=str(settings.get("confluence.auth_type", "auto")),
             timeout=int(settings.get("confluence.timeout_seconds", 30)),
             max_retries=1,
         )
         keys = list(settings.get("confluence.space_keys", []) or [])
         pages = list(_take(client.iter_pages(keys or None, limit=1), 1))
         if pages:
-            report.line(OK, f"Confluence 연결 성공 (예시 페이지: {pages[0].get('title', '')})")
+            report.line(OK, f"Confluence 연결 성공 (인증: {client.auth_type}, "
+                            f"예시 페이지: {pages[0].get('title', '')})")
         else:
             report.line(WARN, "Confluence 에 연결했지만 페이지가 0건이다",
                         "space key 와 계정 권한을 확인한다.")

@@ -128,3 +128,73 @@ def test_factory_builds_http_client():
     client = create_llm_client(section)
     assert isinstance(client, HttpLLMClient)
     assert client.session.verify is False
+
+
+# ----------------------------------------------------------------------
+# Anthropic Messages API 규격 (vLLM 의 /v1/messages 등)
+#
+# 이 규격은 system 을 messages 배열이 아니라 최상위 필드로 받는다.
+# messages 의 role 은 user / assistant 만 허용한다. OpenAI 형식으로 보내면
+# 400 "Input should be 'user' or 'assistant'" 로 거부당한다.
+def anthropic_response(text):
+    return StubResponse({"content": [{"type": "text", "text": text}]})
+
+
+def test_anthropic_format_puts_system_at_top_level():
+    session = StubSession([anthropic_response('{"results": []}')])
+    client = HttpLLMClient("http://llm.internal/v1/messages", "gemma4-31b",
+                           session=session, request_format="anthropic")
+
+    assert client.call_tool("시스템", "사용자", TOOL, "report") == {"results": []}
+
+    body = session.calls[0]["body"]
+    assert "system" in body                       # 최상위 필드
+    assert body["system"].startswith("시스템")
+    assert [m["role"] for m in body["messages"]] == ["user"]   # system role 없음
+    assert body["max_tokens"] > 0
+
+
+def test_anthropic_default_response_path():
+    """규격마다 응답 위치가 다르다. 지정하지 않으면 기본값을 쓴다."""
+    client = HttpLLMClient("http://x/v1/messages", "m", request_format="anthropic",
+                           session=StubSession([]))
+    assert client.response_path == "content.0.text"
+
+    client = HttpLLMClient("http://x/v1/chat/completions", "m",
+                           request_format="openai", session=StubSession([]))
+    assert client.response_path == "choices.0.message.content"
+
+
+def test_merge_system_into_user_for_servers_without_system_role():
+    session = StubSession([openai_response('{"results": []}')])
+    client = HttpLLMClient("http://llm.internal/v1/chat/completions", "m",
+                           session=session, merge_system_into_user=True)
+    client.call_tool("시스템지시", "사용자입력", TOOL, "report")
+
+    messages = session.calls[0]["body"]["messages"]
+    assert [m["role"] for m in messages] == ["user"]
+    assert messages[0]["content"].startswith("시스템지시")
+    assert "사용자입력" in messages[0]["content"]
+
+
+def test_unknown_request_format_lists_valid_values():
+    with pytest.raises(LLMError) as exc:
+        HttpLLMClient("http://x", "m", request_format="messages")
+    assert "anthropic" in str(exc.value)
+
+
+def test_unknown_provider_lists_valid_values():
+    with pytest.raises(LLMError) as exc:
+        create_llm_client({"provider": "mycompany-llm"})
+    message = str(exc.value)
+    assert "http" in message and "openai" in message
+
+
+@pytest.mark.parametrize("provider", ["http", "internal", "openai", "vllm", "custom"])
+def test_common_provider_aliases_are_accepted(provider):
+    client = create_llm_client({
+        "provider": provider,
+        "base_url": "http://llm.internal/v1/messages",
+        "model": "m",
+    })
+    assert isinstance(client, HttpLLMClient)
