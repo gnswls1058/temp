@@ -213,13 +213,19 @@ def command_evaluate(settings) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Gold Set 샘플링 / 평가")
     parser.add_argument("-c", "--config", default="config.yaml")
+
+    # 서브커맨드 뒤에 -c 를 써도 받아준다.
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument("-c", "--config", default=argparse.SUPPRESS)
+
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sample = sub.add_parser("sample", help="층화 표본을 뽑아 라벨 시트를 만든다")
+    sample = sub.add_parser("sample", help="층화 표본을 뽑아 라벨 시트를 만든다",
+                            parents=[common])
     sample.add_argument("--size", type=int, default=250)
     sample.add_argument("--seed", type=int, default=42)
 
-    sub.add_parser("evaluate", help="라벨 대비 현재 설정을 평가한다")
+    sub.add_parser("evaluate", help="라벨 대비 현재 설정을 평가한다", parents=[common])
 
     args = parser.parse_args()
     settings = load_settings(args.config, load_env=False)

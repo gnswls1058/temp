@@ -45,9 +45,17 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("-c", "--config", default="config.yaml", help="설정 파일 경로")
 
+    # 서브커맨드 뒤에 -c 를 써도 받아준다.
+    #   python -m app.main -c config.yaml collect   (argparse 기본 형태)
+    #   python -m app.main collect -c config.yaml   (더 자연스러워 자주 이렇게 친다)
+    # SUPPRESS 를 쓰면 뒤에 주지 않았을 때 앞에서 준 값이 그대로 남는다.
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument("-c", "--config", default=argparse.SUPPRESS,
+                        help="설정 파일 경로")
+
     sub = parser.add_subparsers(dest="command", required=True)
 
-    build = sub.add_parser("build", help="전체 파이프라인 실행")
+    build = sub.add_parser("build", help="전체 파이프라인 실행", parents=[common])
     build.add_argument("--skip-collect", action="store_true",
                        help="Confluence 수집 없이 로컬 캐시로 재빌드")
     build.add_argument("--skip-llm", action="store_true",
@@ -55,9 +63,9 @@ def _build_parser() -> argparse.ArgumentParser:
     build.add_argument("--skip-classification", action="store_true",
                        help="Term 유형 분류 단계를 생략")
 
-    sub.add_parser("collect", help="Confluence 문서 수집만 수행")
-    sub.add_parser("rebuild", help="DB 상태로 Term Dictionary JSON 재생성")
-    sub.add_parser("runs", help="최근 indexing run 이력 조회")
+    sub.add_parser("collect", help="Confluence 문서 수집만 수행", parents=[common])
+    sub.add_parser("rebuild", help="DB 상태로 Term Dictionary JSON 재생성", parents=[common])
+    sub.add_parser("runs", help="최근 indexing run 이력 조회", parents=[common])
 
     return parser
 

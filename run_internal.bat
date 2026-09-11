@@ -40,6 +40,6 @@ if errorlevel 1 (
 
 echo.
 echo === 파이프라인 실행 ===
-python -m app.main build -c config.internal.yaml %*
+python -m app.main -c config.internal.yaml build %*
 
 endlocal

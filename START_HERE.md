@@ -153,12 +153,16 @@ Confluence 에서 페이지 1건을 읽고, 사내 LLM 에 `{"ok": true}` 를 �
 
 ## 4. 첫 실행 — 단계별로 나눠 돌린다
 
+> **`-c` 위치**: `python -m app.main -c 설정파일 명령` 순서로 쓴다.
+> 서브커맨드 뒤에 써도(`... collect -c config.internal.yaml`) 동작하지만,
+> 앞에 두는 편이 표준이다.
+
 한 번에 전체를 돌리지 않는다. LLM 비용을 쓰기 전에 형태소 분석 품질을 먼저 본다.
 
 ### 4-1. 수집만
 
 ```bat
-python -m app.main collect -c config.internal.yaml
+python -m app.main -c config.internal.yaml collect
 ```
 
 문서 수가 예상과 맞는지 확인한다. 0건이면 space key 나 계정 권한 문제다.
@@ -166,7 +170,7 @@ python -m app.main collect -c config.internal.yaml
 ### 4-2. 후보 생성까지 (LLM 호출 없음)
 
 ```bat
-python -m app.main build -c config.internal.yaml --skip-collect --skip-llm
+python -m app.main -c config.internal.yaml build --skip-collect --skip-llm
 ```
 
 `--skip-collect` 는 이미 받아 둔 문서를 쓴다. 다시 수집하지 않는다.
@@ -220,7 +224,7 @@ data\output\userdic_candidates.txt
 
 ```bat
 REM 사전 수정 후 다시
-python -m app.main build -c config.internal.yaml --skip-collect --skip-llm
+python -m app.main -c config.internal.yaml build --skip-collect --skip-llm
 python tools\review_sheet.py export -c config.internal.yaml
 ```
 
@@ -246,7 +250,7 @@ python tools\review_sheet.py export -c config.internal.yaml
 용어가 제대로 잡히면 그때 LLM 을 붙인다.
 
 ```bat
-python -m app.main build -c config.internal.yaml --skip-collect
+python -m app.main -c config.internal.yaml build --skip-collect
 ```
 
 후보 수에 비례해 요청이 나간다. 후보 700쌍이면 배치 24개씩 약 30회 요청이다.
@@ -352,19 +356,19 @@ python tools\gold_set.py evaluate -c config.internal.yaml
 문서가 늘거나 바뀌면 다시 돌린다. 변경된 문서만 다시 받는다.
 
 ```bat
-python -m app.main build -c config.internal.yaml
+python -m app.main -c config.internal.yaml build
 ```
 
 실행 이력:
 
 ```bat
-python -m app.main runs -c config.internal.yaml
+python -m app.main -c config.internal.yaml runs
 ```
 
 DB 상태만으로 사전 JSON 을 다시 만들려면(재수집·재학습 없음):
 
 ```bat
-python -m app.main rebuild -c config.internal.yaml
+python -m app.main -c config.internal.yaml rebuild
 ```
 
 ---

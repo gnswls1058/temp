@@ -190,13 +190,13 @@ run_internal.bat
 
 ```bat
 REM 수집만
-python -m app.main collect -c config.internal.yaml
+python -m app.main -c config.internal.yaml collect
 
 REM 후보 생성까지 (LLM 호출 없음) — 먼저 이걸로 품질을 본다
-python -m app.main build -c config.internal.yaml --skip-llm
+python -m app.main -c config.internal.yaml build --skip-llm
 
 REM 전체
-python -m app.main build -c config.internal.yaml
+python -m app.main -c config.internal.yaml build
 ```
 
 ### 권장 순서
